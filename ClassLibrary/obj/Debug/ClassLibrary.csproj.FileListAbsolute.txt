@@ -10,3 +10,9 @@ H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibr
 H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibrary.dll
 H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibrary.pdb
+H:\CTEC2713\Assignment_Agile Dev\agile dev project\ClassLibrary\bin\Debug\ClassLibrary.dll
+H:\CTEC2713\Assignment_Agile Dev\agile dev project\ClassLibrary\bin\Debug\ClassLibrary.pdb
+H:\CTEC2713\Assignment_Agile Dev\agile dev project\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+H:\CTEC2713\Assignment_Agile Dev\agile dev project\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+H:\CTEC2713\Assignment_Agile Dev\agile dev project\ClassLibrary\obj\Debug\ClassLibrary.dll
+H:\CTEC2713\Assignment_Agile Dev\agile dev project\ClassLibrary\obj\Debug\ClassLibrary.pdb

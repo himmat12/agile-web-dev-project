@@ -12,3 +12,17 @@ C:\Users\aleks\OneDrive - De Montfort University\sandraTest\Testing4\obj\Debug\T
 C:\Users\aleks\OneDrive - De Montfort University\sandraTest\Testing4\obj\Debug\TestingC.358A23E1.Up2Date
 C:\Users\aleks\OneDrive - De Montfort University\sandraTest\Testing4\obj\Debug\Testing4.dll
 C:\Users\aleks\OneDrive - De Montfort University\sandraTest\Testing4\obj\Debug\Testing4.pdb
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Testing4.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Testing4.pdb
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\obj\Debug\TestingCustomer.csproj.AssemblyReference.cache
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\obj\Debug\TestingCustomer.csproj.CoreCompileInputs.cache
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\obj\Debug\TestingC.358A23E1.Up2Date
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\obj\Debug\Testing4.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing4\obj\Debug\Testing4.pdb

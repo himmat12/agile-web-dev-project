@@ -14,3 +14,19 @@ H:\Desktop\2024-2025\Agile Dev Project\Testing6\bin\Debug\ClassLibrary.pdb
 H:\Desktop\2024-2025\Agile Dev Project\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 H:\Desktop\2024-2025\Agile Dev Project\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 H:\Desktop\2024-2025\Agile Dev Project\Testing6\obj\Debug\TestingA.E5671B50.Up2Date
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Testing6.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Testing6.pdb
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\ClassLibrary.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\ClassLibrary.pdb
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\obj\Debug\TestingAddressBook.csproj.AssemblyReference.cache
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\obj\Debug\TestingAddressBook.csproj.CoreCompileInputs.cache
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\obj\Debug\TestingA.E5671B50.Up2Date
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\obj\Debug\Testing6.dll
+H:\CTEC2713\Assignment_Agile Dev\repo\Testing6\obj\Debug\Testing6.pdb

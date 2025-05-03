@@ -1,0 +1,14 @@
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Testing5.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Testing5.pdb
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\obj\Debug\TestingStaff.csproj.AssemblyReference.cache
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\obj\Debug\TestingStaff.csproj.CoreCompileInputs.cache
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\obj\Debug\TestingS.3624E073.Up2Date
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\obj\Debug\Testing5.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\Testing5\obj\Debug\Testing5.pdb

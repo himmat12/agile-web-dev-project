@@ -10,3 +10,9 @@ H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibr
 H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibrary.dll
 H:\Desktop\2024-2025\Agile Dev Project\Skeleton\ClassLibrary\obj\Debug\ClassLibrary.pdb
+C:\Users\aleks\Source\Repos\agile-web-dev-project\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\aleks\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+C:\Users\aleks\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\aleks\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\aleks\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.pdb

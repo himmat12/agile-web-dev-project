@@ -28,3 +28,9 @@ H:\CTEC2713\Assignment_Agile Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj
 H:\CTEC2713\Assignment_Agile Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 H:\CTEC2713\Assignment_Agile Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.dll
 H:\CTEC2713\Assignment_Agile Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.pdb
+H:\agile dev project\repo\ClassLibrary\bin\Debug\ClassLibrary.dll
+H:\agile dev project\repo\ClassLibrary\bin\Debug\ClassLibrary.pdb
+H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.dll
+H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.pdb

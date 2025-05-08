@@ -34,3 +34,9 @@ H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyRef
 H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.dll
 H:\agile dev project\repo\ClassLibrary\obj\Debug\ClassLibrary.pdb
+C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.pdb

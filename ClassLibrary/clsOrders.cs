@@ -92,19 +92,34 @@ namespace ClassLibrary
             }
         }
 
+        /****** FIND METHOD ******/
         public bool Find(int orderID)
         {
-            //set private data members to the test data value 
-            mOrderID = 2;
-            mOrderDate = Convert.ToDateTime("23/12/2022");
-            mOrderStatus = "Test";  //no validation for enum
-            mOrderPaid = true;
-            mOrderTotalPrice = 12.34F;
-            mStaffID = 2;
-            mCustomerID = 5;
-            //always return true
-            return true;
-
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the order id to search for
+            DB.AddParameter("@orderID", orderID);
+            //execute stored procedure
+            DB.Execute("sproc_tblOrders_FilterByOrderID");
+            //if one record is found (should be 1 or 0)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["placementDate"]);
+                mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["orderStatus"]);
+                mOrderPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["isPaid"]);
+                mOrderTotalPrice = (float)Convert.ToDouble(DB.DataTable.Rows[0]["totalPrice"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
+                return true;
+            }
+            //no record found
+            else
+            {
+                //indicates there is a problem
+                return false;
+            }
         }
     }
 }

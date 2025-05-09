@@ -16,7 +16,7 @@ namespace Testing2
         private bool TestDataPaid = true;
         private float TestDataTotalPrice = 14.56F;
 
-        private Int32 OrderID = 2;
+        private Int32 OrderID = 2; //1,2 or 3
         private Boolean Found = false; //create a Boolean to store result of search
         private Boolean OK = true; //create Boolean to record if data is OK (assume true)
 
@@ -91,12 +91,7 @@ namespace Testing2
         [TestMethod]
         public void FindMethodOK()
         {
-            //Boolean to store result of validation
-            Boolean Found = false;
-            //test data
-            Int32 OrderID = 2;
-
-            //invoke method
+            //invoke method uses test data from top
             Found = AnOrder.Find(OrderID);
             //test to check if the result is true
             Assert.IsTrue(Found);
@@ -119,7 +114,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderDate != Convert.ToDateTime("23/12/2022"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("28/04/2025"))
             {
                 OK = false;
             }
@@ -130,7 +125,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderStatus != "Test") 
+            if (AnOrder.OrderStatus != "shipped") 
             {
                 OK = false;
             }
@@ -152,7 +147,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderTotalPrice != 12.34F)
+            if (AnOrder.OrderTotalPrice != 28.99F)
             {  
                 OK = false; 
             }   
@@ -163,7 +158,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.StaffID != 2)
+            if (AnOrder.StaffID != 1)
             { 
             OK = false;
             }
@@ -174,7 +169,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.CustomerID != 5)
+            if (AnOrder.CustomerID != 4)
             {
                 OK = false;
             }

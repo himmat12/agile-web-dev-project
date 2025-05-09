@@ -8,5 +8,11 @@ namespace ClassLibrary
 {
     public class clsSupplier
     {
+        public bool Active { get; set; }
+        public DateTime DateAdded { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
     }
 }

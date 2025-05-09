@@ -24,6 +24,16 @@ namespace Testing1
         }
 
         [TestMethod]
+        public void IdPropertyOk()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Int32 TestData = 1;
+            Supplier.Id = TestData;
+
+            Assert.AreEqual(Supplier.Id, TestData);
+        }
+
+        [TestMethod]
         public void NamePropertyOk()
         {
             clsSupplier Supplier = new clsSupplier();

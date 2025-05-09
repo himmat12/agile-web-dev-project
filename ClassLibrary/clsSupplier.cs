@@ -8,6 +8,7 @@ namespace ClassLibrary
 {
     public class clsSupplier
     {
+        public int Id { get; set; }
         public bool Active { get; set; }
         public DateTime DateAdded { get; set; }
         public string Name { get; set; }

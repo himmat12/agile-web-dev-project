@@ -33,6 +33,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //store the order in the session
         Session["anOrder"] = AnOrder;
         //navigate to view page
-        Response.Redirect("OrderViewer");
+        Response.Redirect("OrderViewer.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }

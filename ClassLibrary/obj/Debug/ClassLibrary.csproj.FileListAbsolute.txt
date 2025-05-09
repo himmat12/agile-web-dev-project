@@ -40,3 +40,9 @@ C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\Clas
 C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Users\P2762008\Source\Repos\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.pdb
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\bin\Debug\ClassLibrary.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\bin\Debug\ClassLibrary.pdb
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.pdb

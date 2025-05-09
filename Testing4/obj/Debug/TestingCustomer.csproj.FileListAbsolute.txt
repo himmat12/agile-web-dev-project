@@ -42,3 +42,19 @@ H:\agile dev project\repo\Testing4\obj\Debug\TestingCustomer.csproj.CoreCompileI
 H:\agile dev project\repo\Testing4\obj\Debug\TestingC.358A23E1.Up2Date
 H:\agile dev project\repo\Testing4\obj\Debug\Testing4.dll
 H:\agile dev project\repo\Testing4\obj\Debug\Testing4.pdb
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Testing4.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Testing4.pdb
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\ClassLibrary.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\ClassLibrary.pdb
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\obj\Debug\TestingCustomer.csproj.AssemblyReference.cache
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\obj\Debug\TestingCustomer.csproj.CoreCompileInputs.cache
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\obj\Debug\TestingC.358A23E1.Up2Date
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\obj\Debug\Testing4.dll
+H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing4\obj\Debug\Testing4.pdb

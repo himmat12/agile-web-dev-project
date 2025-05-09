@@ -36,6 +36,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("OrderViewer.aspx");
     }
 
+    protected void btnFind_Click(object sender, EventArgs e)
+    {       
+        //no validation - check right input type and if the number is there
+
+        //create a new instance of clsOrder
+        clsOrders AnOrder = new clsOrders();
+        //create a variable to store the primary key
+        Int32 OrderID;
+        //create a variable to store the result of find
+        Boolean Found = false;
+        //get the primary key entered by the user
+        OrderID = Convert.ToInt32(txtOrderID.Text);
+        //invoke find
+        Found = AnOrder.Find(OrderID);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtPlacementDate.Text = AnOrder.OrderDate.ToString();
+            txtOrderStatus.Text = AnOrder.OrderStatus;
+            txtTotalPrice.Text = AnOrder.OrderTotalPrice.ToString();
+            txtCustomerID.Text = AnOrder.CustomerID.ToString();
+            txtStaffID.Text = AnOrder.StaffID.ToString();
+            chkIsPaid.Checked = AnOrder.OrderPaid;
+        }
+        else if(Found == false) //hard coded currently needs more refining
+        {
+                lblError.Text = "Value not Found.";
+        }
+    }
+
     protected void btnCancel_Click(object sender, EventArgs e)
     {
 

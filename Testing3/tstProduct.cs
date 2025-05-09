@@ -92,16 +92,16 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void ImageURLPropertyOK()
+        public void releasedDatePropertyOK()
         {
             //create an instance of the class
             clsProduct AnProduct = new clsProduct();
             //create some test data to assign to the property
-            string TestData = "http://example.com/image.jpg";
+            string TestData = "25/05/2025";
             //assign the data to the property
-            AnProduct.ImageURL = TestData;
+            AnProduct.releasedDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnProduct.ImageURL, TestData);
+            Assert.AreEqual(AnProduct.releasedDate, TestData);
         }
     }
 }

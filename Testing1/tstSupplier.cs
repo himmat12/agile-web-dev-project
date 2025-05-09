@@ -7,12 +7,16 @@ namespace Testing1
     [TestClass]
     public class tstSupplier
     {
+        /******************INSTANCE OF THE CLASS TEST******************/
+
         [TestMethod]
         public void InstanceOk()
         {
             clsSupplier Supplier = new clsSupplier();
             Assert.IsNotNull(Supplier);
         }
+
+        /******************PROPERTY OK TESTS******************/
 
         [TestMethod]
         public void ActivePropertyOk() {
@@ -82,6 +86,157 @@ namespace Testing1
             Supplier.DateAdded = TestData;
 
             Assert.AreEqual(Supplier.DateAdded, TestData);
+        }
+
+        /******************FIND METHOD TEST******************/
+
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean Ok = true;
+
+            Int32 SupplierId = 1;
+
+            Found = Supplier.Find(SupplierId);
+
+            Assert.IsTrue(Found);
+
+        }
+
+        /******************PROPERTY DATA TESTS******************/
+
+        [TestMethod]
+        public void TestIdFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+           Int32 SupplierId = 1;
+
+             Found = Supplier.Find(SupplierId);
+
+            if (Supplier.Id != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestNameFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+            Int32 SupplierId = 11;
+
+            Found = Supplier.Find(SupplierId);
+
+            if (Supplier.Name != "Himmat")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestEmailFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+            Int32 SupplierId = 11;
+
+            Found = Supplier.Find(SupplierId);
+
+            if (Supplier.Email != "himmat@gmail.com")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestPhoneFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+            Int32 SupplierId = 11;
+
+            Found = Supplier.Find(SupplierId);
+
+            if (Supplier.Phone != "123")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestAddressFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+            Int32 SupplierId = 11;
+
+            Found = Supplier.Find(SupplierId);
+
+            if (Supplier.Address != "Leicester")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+            Int32 SupplierId = 11;
+
+            Found = Supplier.Find(SupplierId);
+
+            if (Supplier.Active != true)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean OK = true;
+            Boolean Found = false;
+            Int32 SupplierId = 11;
+
+            Found = Supplier.Find(SupplierId);
+
+            if (Supplier.DateAdded !=Convert.ToDateTime("09/05/2025"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
         }
     }
 }

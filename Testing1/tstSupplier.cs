@@ -132,7 +132,7 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 11;
+            Int32 SupplierId = 1;
 
             Found = Supplier.Find(SupplierId);
 
@@ -151,7 +151,7 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 11;
+            Int32 SupplierId = 1;
 
             Found = Supplier.Find(SupplierId);
 
@@ -170,11 +170,11 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 11;
+            Int32 SupplierId = 1;
 
             Found = Supplier.Find(SupplierId);
 
-            if (Supplier.Phone != "123")
+            if (Supplier.Phone != "123456789")
             {
                 OK = false;
             }
@@ -189,11 +189,11 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 11;
+            Int32 SupplierId = 1;
 
             Found = Supplier.Find(SupplierId);
 
-            if (Supplier.Address != "Leicester")
+            if (Supplier.Address != "Leicester, LE1 9BH")
             {
                 OK = false;
             }
@@ -208,7 +208,7 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 11;
+            Int32 SupplierId = 1;
 
             Found = Supplier.Find(SupplierId);
 
@@ -227,11 +227,11 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 11;
+            Int32 SupplierId = 1;
 
             Found = Supplier.Find(SupplierId);
 
-            if (Supplier.DateAdded !=Convert.ToDateTime("09/05/2025"))
+            if (Supplier.DateAdded !=Convert.ToDateTime("12/05/2025"))
             {
                 OK = false;
             }

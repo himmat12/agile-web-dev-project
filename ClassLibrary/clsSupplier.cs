@@ -26,15 +26,34 @@ namespace ClassLibrary
 
         public bool Find(int SupplierId)
         {
-            id = 1;
-            name = "Himmat";
-            email = "himmat@gmail.com";
-            phone = "123";
-            address = "Leicester";
-            active = true;
-            dateAdded = Convert.ToDateTime("09/05/2025");
+            //id = 1;
+            //name = "Himmat";
+            //email = "himmat@gmail.com";
+            //phone = "123";
+            //address = "Leicester";
+            //active = true;
+            //dateAdded = Convert.ToDateTime("09/05/2025");
 
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@SupplierId", SupplierId);
+
+            DB.Execute("sproc_tblSupplier_FilterBySupplierId");
+
+            if(DB.Count == 1)
+            {
+                id = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
+                name = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                email = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                phone = Convert.ToString(DB.DataTable.Rows[0]["Phone"]);
+                address = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                active = Convert.ToBoolean(DB.DataTable.Rows[0]["IsActive"]);
+                dateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["CreatedAt"]);
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

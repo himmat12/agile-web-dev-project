@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace ClassLibrary
 {
@@ -121,5 +122,65 @@ namespace ClassLibrary
                 return false;
             }
         }
+        /****** VALID METHOD ******/
+        public string Valid(string orderStatus, string orderDate, string orderTotalPrice)
+        {
+            String Error = "";
+            //make temp variable for date
+            DateTime DateTemp;
+            try
+            {
+                //orderDate value copied to DateTemp variable
+                DateTemp = Convert.ToDateTime(orderDate);
+
+                /** ORDERSTATUS **/
+                if (orderStatus.Length == 0)
+                {
+                    Error += "Order Status cannot be blank : ";
+                }
+                if (orderStatus.Length > 20)
+                {
+                    Error += "Order Status must have less than 20 characters: ";
+                }
+
+                /** DATE **/
+                //if not today
+                if (DateTemp != DateTime.Now.Date)
+                {
+                    Error += "The order date has to be the current date : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error += "The date was not a valid date : ";
+            }
+            /** TOTAL PRICE **/
+            try
+            {
+                if (orderTotalPrice.Length == 0)
+                {
+                    Error += "Order total price cannot be blank : ";
+                } //check for over max length too 18 with 2 decimals 20 total
+                if (orderTotalPrice.Length > 7)
+                {
+                    Error += "The total price cannot be over 7 digits : ";
+                }
+                if (Convert.ToDecimal(orderTotalPrice) < 0)
+                {
+                    Error += "The total price cannot be lower than 0 : ";
+                }
+            }
+            catch
+            {
+                //record error
+                Error += "The total price was not in the right format - a float of 7 digits : ";
+            }
+            //always return at end
+            return Error;
+
+        }
+
+
     }
 }

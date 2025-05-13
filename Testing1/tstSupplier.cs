@@ -6,7 +6,15 @@ namespace Testing1
 {
     [TestClass]
     public class tstSupplier
+
     {
+        /******************Test Data******************/
+        String Name = "Himmat";
+        String Email = "himmat@gmail.com";
+        String Phone = "1234567898";
+        String Address = "Leicester";
+        String DateAdded = DateTime.Now.ToShortDateString();
+
         /******************INSTANCE OF THE CLASS TEST******************/
 
         [TestMethod]
@@ -237,6 +245,539 @@ namespace Testing1
             }
 
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+
+        /******************Parameter Tests******************/
+
+        /******************Supplier Name Field******************/
+
+        [TestMethod]
+        public void SupplierNameMinLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "";
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "a";
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "ab";
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMaxLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "";
+
+            SupplierName = SupplierName.PadRight(49,'a');
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "";
+
+            SupplierName = SupplierName.PadRight(50, 'a');
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "";
+
+            SupplierName = SupplierName.PadRight(51, 'a');
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "";
+
+            SupplierName = SupplierName.PadRight(25, 'a');
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String SupplierName = "";
+
+            SupplierName = SupplierName.PadRight(500, 'a');
+
+            Error = Supplier.ValidData(SupplierName, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************Email Field******************/
+
+        [TestMethod]
+        public void EmailMinLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "";
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "a";
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "aa";
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "";
+
+            Email = Email.PadRight(49, 'a');
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "";
+
+            Email = Email.PadRight(50, 'a');
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "";
+
+            Email = Email.PadRight(51, 'a');
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "";
+
+            Email = Email.PadRight(25, 'a');
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String Email = "";
+
+            Email = Email.PadRight(500, 'a');
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************Phone Field******************/
+        [TestMethod]
+        public void PhoneMinLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "";
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "a";
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "aa";
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneMaxLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "";
+            Phone = Phone.PadRight(19, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "";
+            Phone = Phone.PadRight(20, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "";
+            Phone = Phone.PadRight(21, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "";
+            Phone = Phone.PadRight(10, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Phone = "";
+            Phone = Phone.PadRight(100, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************Address Field******************/
+        [TestMethod]
+        public void AddressMinLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "";
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "a";
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "aa";
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressMaxLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(49, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(50, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(51, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(25, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AddressExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(200, 'a');
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************Added Date Field******************/
+
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-100);
+
+            String DateAdded = TestDate.ToString();
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-1);
+
+            String DateAdded = TestDate.ToString();
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            String DateAdded = TestDate.ToString();
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(1);
+
+            String DateAdded = TestDate.ToString();
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(100);
+
+            String DateAdded = TestDate.ToString();
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedInvalidData()
+        {
+            clsSupplier Supplier = new clsSupplier();
+
+            String Error = "";
+
+            String DateAdded = "this is not a date";
+
+            Error = Supplier.ValidData(Name, Email, Phone, Address, DateAdded);
+
+            Assert.AreNotEqual(Error, "");
         }
     }
 }

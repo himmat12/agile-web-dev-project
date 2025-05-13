@@ -18,12 +18,12 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Staff.Name);
         Response.Write(Staff.Salary);
         Response.Write(Staff.EmploymentDate);
-        Response.Write(Staff.IsActive);
-        //capture the EmploymentDate
-        Staff.EmploymentDate = Convert.ToDateTime(DateTime.Now);
-        //Capture the Salary
-        Staff.Salary = (int)Convert.ToDecimal(txtSalary.Text);
-        //Capture IsActive check box
-        Staff.IsActive = chkIsActive.Checked;
+        //Response.Write(Staff.IsActive);
+        ////capture the EmploymentDate
+        //Staff.EmploymentDate = Convert.ToDateTime(DateTime.Now);
+        ////Capture the Salary
+        //Staff.Salary = (int)Convert.ToDecimal(txtSalary.Text);
+        ////Capture IsActive check box
+        //Staff.IsActive = chkIsActive.Checked;
     }
 }

@@ -139,11 +139,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //check the product ID
-            if (AnProduct.ProductID != 2)
+            if (AnProduct.ProductID != 5)
             {
                 OK = false;
             }
@@ -161,11 +161,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //checked the released date property
-            if (AnProduct.ReleasedDate != Convert.ToDateTime("25/05/2025"))
+            if (AnProduct.ReleasedDate != Convert.ToDateTime("23/05/2025"))
             {
                 OK = false;
             }
@@ -183,7 +183,7 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //check the in stock property
@@ -205,11 +205,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //check the price property
-            if (AnProduct.Price != 19.99m) //m is used to indicate a decimal
+            if (AnProduct.Price != 24.99m) //m is used to indicate a decimal
             {
                 OK = false;
           
@@ -228,11 +228,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //check the size property
-            if (AnProduct.Size != "Product Size")
+            if (AnProduct.Size != "UK 4")
             {
                 OK = false;
             }
@@ -250,11 +250,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //check the category property
-            if (AnProduct.Category != "Product Category")
+            if (AnProduct.Category != "Kids")
             {
                 OK = false;
             }
@@ -272,11 +272,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is OK)
             Boolean OK = true;
             //create test data to use with the method
-            Int32 ProductID = 2;
+            Int32 ProductID = 5;
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //check the name property
-            if (AnProduct.Name != "Product Name")
+            if (AnProduct.Name != "Boots")
             {
                 OK = false;
             }

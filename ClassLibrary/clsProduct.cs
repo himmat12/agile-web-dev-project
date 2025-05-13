@@ -127,17 +127,32 @@ namespace ClassLibrary
 
         public bool Find(int productID)
         {
-            //set the private data member to the test data  value
-            mProductID = 2;
-            mName = "Product Name";
-            mInStock = true;
-            mCategory = "Product Category";
-            mPrice = 19.99m;
-            mSize = "Product Size";
-            mReleasedDate = Convert.ToDateTime("25/05/2025");
-            
-            //always retur true
-            return true;
+           //create an instance of the data connection
+           clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the product ID to search for
+            DB.AddParameter("ProductID", productID);
+            //execute the stored procedure 
+            DB.Execute("sproc_tblProduct_FilterByProductID");
+            //if one record is found 
+            if (DB.Count == 1)
+            {
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                mCategory = Convert.ToString(DB.DataTable.Rows[0]["Category"]);
+                mSize = Convert.ToString(DB.DataTable.Rows[0]["Size"]);
+                mReleasedDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReleasedDate"]);
+
+                // Return that everything worked OK
+                return true;
+            }
+            else
+            {
+                // No record was found
+                return false;
+
+            }
         }
     }
 }

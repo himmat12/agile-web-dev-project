@@ -46,6 +46,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsProduct AnProduct = new clsProduct();
         //create a vartiable to store the PK
         Int32 ProductID;
+        //reate a variable to store the found status
+        Boolean Found = false;
         //get the PK entered by the user
         ProductID = Convert.ToInt32(txtProductID.Text);
         //find the record
@@ -66,6 +68,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = "Product not found.";
         }
     }
-}
-
     
+
+    }

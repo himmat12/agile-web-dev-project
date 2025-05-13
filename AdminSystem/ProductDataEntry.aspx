@@ -37,7 +37,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnFind" runat="server" height="25px" OnClick="Button1_Click" style="z-index: 1; left: 279px; top: 13px; position: absolute" Text="Find" width="60px" />
+            <asp:Button ID="btnFind" runat="server" height="25px" OnClick="btnFind_Click" style="z-index: 1; left: 279px; top: 13px; position: absolute" Text="Find" width="60px" />
         </p>
     </form>
 </body>

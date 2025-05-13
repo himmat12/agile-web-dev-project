@@ -22,7 +22,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order status
         AnOrder.OrderStatus = txtOrderStatus.Text;
         //capture the total price
-        AnOrder.OrderTotalPrice = (float)Convert.ToDouble(txtTotalPrice);
+        AnOrder.OrderTotalPrice = (float)Convert.ToDecimal(txtTotalPrice.Text);
         //capture customer id
         AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
         //capture staff id
@@ -35,6 +35,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to view page
         Response.Redirect("OrderViewer.aspx");
     }
+
 
     protected void btnFind_Click(object sender, EventArgs e)
     {       

@@ -154,5 +154,47 @@ namespace ClassLibrary
 
             }
         }
+
+        public string Valid(string size, string name, string category, string price, string releasedDate)
+        {
+           return "";
+            //create a string variable to store the error
+            string Error = "";
+            //if the size is blank
+            if (size.Length == 0)
+            {
+                //record the error
+                Error = Error + "The size may not be blank : ";
+            }
+            //if the name is blank
+            if (name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The name may not be blank : ";
+            }
+            //if the category is blank
+            if (category.Length == 0)
+            {
+                //record the error
+                Error = Error + "The category may not be blank : ";
+            }
+            //if the price is blank
+            if (price.Length == 0)
+            {
+                //record the error
+                Error = Error + "The price may not be blank : ";
+            }
+            //if the released date is blank
+            if (releasedDate.Length == 0)
+            {
+                //record the error
+                Error = Error + "The released date may not be blank : ";
+            }
+        }
+
+        public string Valid(string name, string price, string inStock, string category, string size, string releasedDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -6,7 +7,17 @@ namespace Testing3
 {
     [TestClass]
     public class tstProduct
+
     {
+        //good test data
+        //create some test data to pass to the method
+        string Size = "UK 4";
+        string Name = "Boots";
+        string Category = "Kids";
+        string Price = "24.99";
+        string InStock = "true";
+        string ReleasedDate = DateTime.Now.ToShortDateString();
+
 
         /************************************************ INSTANCE OF THE CLASS TEST *************/
         [TestMethod]
@@ -212,7 +223,7 @@ namespace Testing3
             if (AnProduct.Price != 24.99m) //m is used to indicate a decimal
             {
                 OK = false;
-          
+
             }
             //test to see if the result is true
             Assert.IsTrue(OK);
@@ -283,12 +294,111 @@ namespace Testing3
             //test to see if the result is true
             Assert.IsTrue(OK);
         }
-       
+
+
+        /*********************************************** VALID METHOD TESTS  *********************/
+
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsProduct AnProduct = new clsProduct();
+            //string variable to store the error
+            string Error = "";
+            //invoke the method
+            Error = AnProduct.Valid(Name, Price, InStock, Category, Size, ReleasedDate);
+            //test to see if the result is true
+            Assert.AreEqual(Error, "");
+        }
+
+
+        /****** SIZE *******/
+
+        [TestMethod]
+        public void SizeMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsProduct AnProduct = new clsProduct();
+            //string variable to store the error
+            string Error = "";
+            //create some test data to pass to the method
+            string Size = ""; //less than 2 characters
+            //invoke the method
+            Error = AnProduct.Valid(Size, Name, Category, Price, ReleasedDate);
+            //test to see if the result is true
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SizeNoMin()
+        {
+            //create an instance of the class we want to create
+            clsProduct AnProduct = new clsProduct();
+            //string variable to store the error
+            string Error = "";
+            //create some test data to pass to the method
+            string Size = "UK 4"; //valid size
+            //invoke the method
+            Error = AnProduct.Valid(Size, Name, Category, Price, ReleasedDate);
+            //test to see if the result is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SizeNoMax()
+        {
+            clsProduct AnProduct = new clsProduct();
+            //string variable to store the error
+            string Error = "";
+            //create some test data to pass to the method
+            string Size = "UK 4"; //valid size
+            //invoke the method
+            Error = AnProduct.Valid(Size, Name, Category, Price, ReleasedDate);
+            //test to see if the result is true
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SizeNoMinPlusOne()
+        {
+            clsProduct AnProduct = new clsProduct();
+            //string variable to store the error
+            string Error = "";
+            //create some test data to pass to the method
+            string Size = "UK 4"; //valid size
+            //invoke the method
+            Error = AnProduct.Valid(Size, Name, Category, Price, ReleasedDate);
+
+        }
+        [TestMethod]
+        public void SizeNoMaxPlusOne() {
+            { clsProduct AnProduct = new clsProduct();
+                //string variable to store the error
+                string Error = "";
+                //create some test data to pass to the method
+                string Size = "UK 4"; //valid size should fail
+                //invoke the method
+                Error = AnProduct.Valid(Size, Name, Category, Price, ReleasedDate);
+                //test to see if the result is true
+                Assert.AreEqual(Error, "");
+            }
+
+          
+
+
+
+
+
+
+
+
+
+
 
         }
     }
 
-
+}
 
 
 

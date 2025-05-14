@@ -8,7 +8,6 @@ namespace Testing4
     [TestClass]
     public class tstCustomer
     {
-
         /******************** INSTANCE OF THE CLASS TEST **************/
         [TestMethod]
         public void InstanceOK()
@@ -31,9 +30,9 @@ namespace Testing4
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            Customer.customerId = TestData;
+            Customer.CustomerId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Customer.customerId, TestData);
+            Assert.AreEqual(Customer.CustomerId, TestData);
         }
 
         [TestMethod]
@@ -115,16 +114,42 @@ namespace Testing4
         }
 
 
+        /**************FIND METHOD TEST***************/
+
         [TestMethod]
-        public void DateAddedPropertyOK()
+        public void FindMethodOK()
         {
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
-            DateTime TestData = DateTime.Now.Date;
-            Customer.DateAdded = TestData;
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 CustomerId = 1;
+            //invoke the method
+            Found = Customer.Find(CustomerId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
 
-            Assert.AreEqual(Customer.DateAdded, TestData);
         }
-
+        /*********** PROPERTY DATA TESTS*****************/
+        [TestMethod]
+        public void CustomerIdFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 1;
+            //invoke the method
+            Found = Customer.Find(CustomerId);
+            if (Customer.CustomerId != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }

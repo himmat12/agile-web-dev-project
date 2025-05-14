@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            This is the Orders Data Entry Page
+            Enter the details of an order below:
 
         </div>
         <asp:Label ID="lblOrderID" runat="server" style="z-index: 1; left: 10px; top: 46px; position: absolute; width: 121px" Text="Order ID: "></asp:Label>

@@ -18,22 +18,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrders AnOrder = new clsOrders();
         //capture the placement date
-        AnOrder.OrderDate = Convert.ToDateTime(DateTime.Now);
+        string OrderDate = txtPlacementDate.Text;
         //capture the order status
-        AnOrder.OrderStatus = txtOrderStatus.Text;
-        //capture the total price
-        AnOrder.OrderTotalPrice = (float)Convert.ToDecimal(txtTotalPrice.Text);
+        string OrderStatus = txtOrderStatus.Text;
+        //capture order total price
+        string OrderTotalPrice = txtTotalPrice.Text;
         //capture customer id
-        AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        //capture staff id
-        AnOrder.StaffID = Convert.ToInt32(txtStaffID.Text);
-        //capture is paid check box
-        AnOrder.OrderPaid = chkIsPaid.Checked;
+        string CustomerID = txtCustomerID.Text;
+        //capture the staff id
+        string StaffID = txtStaffID.Text;
+        //capture paid check box
+        string Paid = chkIsPaid.Text;
 
-        //store the order in the session
-        Session["anOrder"] = AnOrder;
-        //navigate to view page
-        Response.Redirect("OrderViewer.aspx");
+        string Error = "";
+        Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPrice);
+        if (Error == "")
+        {
+            //capture the placement date
+            AnOrder.OrderDate = Convert.ToDateTime(DateTime.Now);
+            //capture the order status
+            AnOrder.OrderStatus = OrderStatus;
+            //capture the total price
+            AnOrder.OrderTotalPrice = (float)Convert.ToDecimal(OrderTotalPrice);
+            //capture customer id
+            AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+            //capture staff id
+            AnOrder.StaffID = Convert.ToInt32(StaffID);
+
+            //store the order in the session
+            Session["anOrder"] = AnOrder;
+            //navigate to view page
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
 
 

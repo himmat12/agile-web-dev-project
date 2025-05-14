@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 
 namespace ClassLibrary
@@ -123,8 +124,8 @@ namespace ClassLibrary
             }
         }
         /****** VALID METHOD ******/
-        public string Valid(string orderStatus, string orderDate, string orderTotalPrice)
-        {
+        public string Valid(string orderStatus, string orderDate, string orderTotalPrice)  //could add foreign keys?
+        { 
             String Error = "";
             //make temp variable for date
             DateTime DateTemp;
@@ -134,6 +135,7 @@ namespace ClassLibrary
                 DateTemp = Convert.ToDateTime(orderDate);
 
                 /** ORDERSTATUS **/
+               // var statuses = new List<string>() { "pending", "shipped", "cancelled", "completed" }; //add a check to see if the status is what the database allows
                 if (orderStatus.Length == 0)
                 {
                     Error += "Order Status cannot be blank : ";
@@ -144,10 +146,10 @@ namespace ClassLibrary
                 }
 
                 /** DATE **/
-                //if not today
-                if (DateTemp != DateTime.Now.Date)
+                //if we cannot have past dates we cannot see past orders. so changed to be only future
+                if (DateTemp > DateTime.Now.Date)
                 {
-                    Error += "The order date has to be the current date : ";
+                    Error += "The order date cannot be in the future : ";
                 }
             }
             catch

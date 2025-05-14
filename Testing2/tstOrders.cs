@@ -1,8 +1,7 @@
 ﻿using System;
-using System.IO;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Testing2
 {

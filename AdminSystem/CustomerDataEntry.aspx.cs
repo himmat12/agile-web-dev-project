@@ -47,7 +47,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the creation date
         Customer.CreatedAt = Convert.ToDateTime(DateTime.Now);
         //capture customer id
-        Customer.customerId = Convert.ToInt32(CustomerId);
+        Customer.CustomerId = Convert.ToInt32(CustomerId);
         //capture address
         Customer.Address = CustomerAddress;
 

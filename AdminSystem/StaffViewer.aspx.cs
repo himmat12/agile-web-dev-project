@@ -21,6 +21,6 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Staff.ContactNumber);
         Response.Write(Staff.EmploymentDate);
         Response.Write(Staff.Salary);
-        Response.Write(Staff.Active);
+        Response.Write(Staff.IsActive);
     }
 }

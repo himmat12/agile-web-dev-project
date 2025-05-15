@@ -107,7 +107,7 @@ namespace Testing5
             //create a Boolean variable to store the resuls of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //test to see if the result is true
@@ -123,12 +123,12 @@ namespace Testing5
             Boolean OK = true;
             //create some test data to use with the method
 
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
 
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the address id
-            if (Staff.StaffId != 21)
+            if (Staff.StaffId != 1)
             {
                 OK = false;
             }
@@ -144,11 +144,11 @@ namespace Testing5
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the date added property
-            if (Staff.EmploymentDate != Convert.ToDateTime("23/12/2022"))
+            if (Staff.EmploymentDate != Convert.ToDateTime("2/05/2025"))
             {
                 OK = false;
             }
@@ -165,7 +165,7 @@ namespace Testing5
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the house no property
@@ -187,7 +187,7 @@ namespace Testing5
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the street property
@@ -208,11 +208,11 @@ namespace Testing5
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the post code property
-            if (Staff.Name != "maya")
+            if (Staff.Name != "Maya")
             {
                 OK = false;
             }
@@ -229,7 +229,7 @@ namespace Testing5
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the town property
@@ -251,7 +251,7 @@ namespace Testing5
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the active property

@@ -72,21 +72,37 @@ namespace ClassLibrary
         // Find method stub for testing
         public bool Find(int StaffId)
         {
-            // Simulate finding a record with StaffId = 21
-            if (StaffId == 21)
+            clsDataConnection DB = new clsDataConnection();
+            // Pass the StaffId to the database connection
+            DB.AddParameter("@StaffID", StaffId);
+            // Execute the stored procedure to find the record
+            DB.Execute("sproc_tblStaff_FilterByStaffID");
+            // Check if any records were found
+            if (DB.Count == 1)
             {
-                mStaffId = 21;
-                mActive = true;
-                mEmploymentDate = Convert.ToDateTime("23/12/2022");
-                mEmail = "maya@gmail.com";
-                mName = "maya";
-                mContactNumber = "123";
-                mSalary = 250;
+                // Get the data from the database
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsActive"]);
+                mEmploymentDate = Convert.ToDateTime(DB.DataTable.Rows[0]["EmploymentDate"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mContactNumber = Convert.ToString(DB.DataTable.Rows[0]["ContactNumber"]);
+                mSalary = (int)Convert.ToDecimal(DB.DataTable.Rows[0]["Salary"]);
+               
                 return true;
             }
-            return false;
+            else
+            {
+                // If the StaffId is not found, return false
+                return false;
+            }
         }
     }
-}  
+}
+    
+          
+
+
+
 
     

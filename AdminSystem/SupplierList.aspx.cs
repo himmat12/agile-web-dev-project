@@ -4,11 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (IsPostBack == false)
+        {
+            DisplaySuppliers();
+        }
     }
+
+    private void DisplaySuppliers()
+    {
+        clsSupplierCollection Suppliers = new clsSupplierCollection();
+
+        // set the data source to list of suppliers in collection
+        lstSupplierList.DataSource = Suppliers.SupplierList;
+
+        // set the name of the primary key
+        lstSupplierList.DataValueField = "Id";
+
+        // set the data field to display
+        lstSupplierList.DataTextField = "Name";
+
+        // bind the data to the list
+        lstSupplierList.DataBind();
+    }
+
 }

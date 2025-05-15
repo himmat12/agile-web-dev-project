@@ -83,7 +83,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         txtId.Text = "";
         txtName.Text = "";
-        txtEmail.Text = "";
+        txtEmail.Text =
         txtPhone.Text = "";
         txtAddress.Text = "";
         txtDateAdded.Text = "";

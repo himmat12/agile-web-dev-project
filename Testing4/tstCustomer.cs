@@ -141,15 +141,107 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 4;
             //invoke the method
             Found = Customer.Find(CustomerId);
-            if (Customer.CustomerId != 1)
+            if (Customer.CustomerId != 4)
             {
                 OK = false;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void CustomerCreatAtFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 4;
+            Found = Customer.Find(CustomerId);
+            if (Customer.CreatedAt != Convert.ToDateTime("23/10/2024"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerNameFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 4;
+            Found = Customer.Find(CustomerId);
+            if (Customer.Name != "Sam")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerEmailFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 4;
+            Found = Customer.Find(CustomerId);
+            if (Customer.Email != "Sam@gmail.com")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerAddressFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 4;
+            Found = Customer.Find(CustomerId);
+            if (Customer.Address != "LE3 3JD")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerIsSubscribedFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 4;
+            Found = Customer.Find(CustomerId);
+            if (Customer.IsSubscribed != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNumberFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 4;
+            Found = Customer.Find(CustomerId);
+            if (Customer.PhoneNumber != "09382736282")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
+   
 }

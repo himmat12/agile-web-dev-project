@@ -20,16 +20,49 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Staff.Name = txtName.Text;
         Staff.Email = txtEmail.Text;
         Staff.ContactNumber = txtContactNumber.Text;
-        //Staff.Salary = (int)Convert.ToDecimal(txtSalary.Text);
+
+        // Fix: Assign Salary as a string since clsStaff.Salary is of type string
+        Staff.Salary = txtSalary.Text;
+
         Staff.EmploymentDate = Convert.ToDateTime(txtEmploymentDate.Text);
-        //Staff.Active = chkIsActive.Checked;
+        Staff.IsActive = chkIsActive.Checked;
 
         //store the Staff on the session object
         Session["Staff"] = Staff;
         //navigate to the view page
         Response.Redirect("StaffViewer.aspx");
     }
+    protected void BtnFind_Click(object sender, EventArgs e)
+    {   //create an instance of clsStaff
+        clsStaff Staff = new clsStaff();
+        //variable to store the primary key
+        Int32 StaffId;
+        //variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        StaffId = Convert.ToInt32(txtStaffID.Text);
+        //find the record
+        Found = Staff.Find(StaffId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtName.Text = Staff.Name;
+            txtEmail.Text = Staff.Email;
+            txtContactNumber.Text = Staff.ContactNumber;
+            txtSalary.Text = Staff.Salary;
+            txtEmploymentDate.Text = Staff.EmploymentDate.ToString();
+            chkIsActive.Checked = Staff.IsActive;
+        }
+    }
 
 
 
+   
+  
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
 }

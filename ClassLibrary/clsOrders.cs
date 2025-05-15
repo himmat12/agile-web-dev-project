@@ -151,6 +151,10 @@ namespace ClassLibrary
                 {
                     Error += "The order date cannot be in the future : ";
                 }
+                if (DateTemp < DateTime.Now.Date.AddYears(-5) ) //dates can be 5 years in past
+                {
+                    Error += "The order date is too far in the past : ";
+                }
             }
             catch
             {

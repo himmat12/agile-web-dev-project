@@ -282,7 +282,7 @@ namespace Testing2
             string OrderDate = TestDate.ToString();
             //invoke the method
             Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
-            //test to see that the result is correct
+            //test to see that the result is correct - date cannot be less than 5 years ago
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -294,8 +294,8 @@ namespace Testing2
             string OrderDate = TestDate.ToString();
             //invoke the method
             Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            //test to see that the result is correct - changed to accept past dates
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderDateMin()

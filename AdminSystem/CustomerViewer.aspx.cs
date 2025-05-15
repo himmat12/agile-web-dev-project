@@ -18,7 +18,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Customer.Name);
         Response.Write(Customer.Email);
         Response.Write(Customer.PhoneNumber);
-        Response.Write(Customer.customerId);
+        //Response.Write(Customer.customerId);
         Response.Write(Customer.IsSubscribed);
         Response.Write(Customer.Address);
         Response.Write(Customer.CreatedAt);

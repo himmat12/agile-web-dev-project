@@ -20,9 +20,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Staff.Name = txtName.Text;
         Staff.Email = txtEmail.Text;
         Staff.ContactNumber = txtContactNumber.Text;
-        Staff.Salary = (int)Convert.ToDecimal(txtSalary.Text);
+        //Staff.Salary = (int)Convert.ToDecimal(txtSalary.Text);
         Staff.EmploymentDate = Convert.ToDateTime(txtEmploymentDate.Text);
-        Staff.Active = chkIsActive.Checked;
+        //Staff.Active = chkIsActive.Checked;
 
         //store the Staff on the session object
         Session["Staff"] = Staff;

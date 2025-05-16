@@ -100,18 +100,36 @@ namespace ClassLibrary
             }
         }
 
+        /*********FIND METHOD  ********/
         public bool Find(int CustomerId)
         {
-            mCustomerId = 4;
-            mCustomerDateCreated = Convert.ToDateTime("23/10/2024");
-            mCustomerName = "Sam";
-            mCustomerEmail = "Sam@gmail.com";
-            mCustomerAddress = "LE3 3JD";
-            mCustomerIsSubscribed = true;
-            mCustomerPhoneNumber = "09382736282";
-            //always return true
-            return true;
-        }
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for 
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mCustomerDateCreated = Convert.ToDateTime(DB.DataTable.Rows[0]["CreatedAt"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mCustomerIsSubscribed = Convert.ToBoolean(DB.DataTable.Rows[0]["IsSubscribed"]);
+                mCustomerPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["PhoneNumber"]);
+                //always return true
+                return true;
+            }
+            //if no record was found 
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
 
+        }
     }
 }

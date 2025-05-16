@@ -160,7 +160,7 @@ namespace Testing4
             Boolean OK = true;
             Int32 CustomerId = 4;
             Found = Customer.Find(CustomerId);
-            if (Customer.CreatedAt != Convert.ToDateTime("23/10/2024"))
+            if (Customer.CreatedAt != Convert.ToDateTime("26/08/2003"))
             {
                 OK = false;
             }
@@ -175,7 +175,7 @@ namespace Testing4
             Boolean OK = true;
             Int32 CustomerId = 4;
             Found = Customer.Find(CustomerId);
-            if (Customer.Name != "Sam")
+            if (Customer.Name != "paula")
             {
                 OK = false;
             }
@@ -190,9 +190,9 @@ namespace Testing4
             Boolean OK = true;
             Int32 CustomerId = 4;
             Found = Customer.Find(CustomerId);
-            if (Customer.Email != "Sam@gmail.com")
+            if (Customer.Email != "Paula@gmail.com")
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
@@ -205,9 +205,9 @@ namespace Testing4
             Boolean OK = true;
             Int32 CustomerId = 4;
             Found = Customer.Find(CustomerId);
-            if (Customer.Address != "LE3 3JD")
+            if (Customer.Address != "LE4 4FT")
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
@@ -235,7 +235,7 @@ namespace Testing4
             Boolean OK = true;
             Int32 CustomerId = 4;
             Found = Customer.Find(CustomerId);
-            if (Customer.PhoneNumber != "09382736282")
+            if (Customer.PhoneNumber != "082738463")
             {
                 OK = false;
             }

@@ -8,6 +8,7 @@ namespace Testing2
     [TestClass]
     public class tstOrder
     {
+        /******************DATA******************/
         //create instance of class
         private clsOrders AnOrder = new clsOrders();
         //test data

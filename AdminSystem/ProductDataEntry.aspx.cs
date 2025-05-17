@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,24 +21,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsProduct
         clsProduct AnProduct = new clsProduct();
         //capture the product id
-        AnProduct.ProductID = Convert.ToInt32(txtProductID.Text);
+        string ProductID = txtProductID.Text;
         //capture the product name
-        AnProduct.Name = txtName.Text;
+        string Name = txtName.Text;
         //capture the product category
-        AnProduct.Category = txtCategory.Text;
+        string Category = txtCategory.Text;
         //capture the product price
-        AnProduct.Price = Convert.ToDecimal(txtPrice.Text);
+        string Price = txtPrice.Text;
         //capture the product size
-        AnProduct.Size = txtSize.Text;
+        string Size = txtSize.Text;
         //capture the product in stock
-        AnProduct.InStock = chkInStock.Checked;
+        string InStock = chkInStock.Text;
         //capture the product release date
-        AnProduct.ReleasedDate = Convert.ToDateTime(txtReleasedDate.Text);
-        //store the product in the session object
-        Session["AnProduct"] = AnProduct;
-        //navigate to the view page
-        Response.Redirect("ProductViewer.aspx");
-
+        string ReleasedDate = txtReleasedDate.Text;
+        // variable for error message
+        string Error = "";
+        //validate the data on the web form
+        Error = AnProduct.Valid(Name, Size, Category, Price, ReleasedDate);
+        if (Error == "")
+        {
+            //capture the name
+            AnProduct.Name = Name;
+            //capture the size
+            AnProduct.Size = Size;
+            //capture the category
+            AnProduct.Category = Category;
+            //convert and capture the price
+            AnProduct.Price = Convert.ToDecimal(Price);
+            //capture the release date
+            AnProduct.ReleasedDate = Convert.ToDateTime(ReleasedDate);
+            //store the product in the session object
+            Session["AnProduct"] = AnProduct;
+            //navigate to the view page
+            Response.Redirect("ProductViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = "There were problems with the data entered: " + Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

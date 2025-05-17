@@ -90,6 +90,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = "Product not found.";
         }
     }
-    
+
+
+
+    protected void txtProductID_TextChanged(object sender, EventArgs e)
+    {
 
     }
+}

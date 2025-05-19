@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ClassLibrary
 {
@@ -129,6 +130,83 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
+
+        }
+
+        /*********VALID METHOD**********/
+
+        public string Valid(string name, string email, bool isSubscribed, string address, DateTime CreatedAt)
+        {
+            string Error = "";
+
+            //if the name is blank
+            if (name.Length == 0)
+            {
+                //record the error
+                Error = Error + "Name may not be blank : ";
+
+            }
+            if (name.Length > 50)
+            {
+                //record error
+                Error = Error + "name must be under 50 characters";
+            }
+           
+
+                //if email is blank
+                if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "email must not remain blank : ";
+
+            }
+            if (email.Length > 50)
+            {
+                //record error
+                Error = Error + "email must be under 50 characters";
+            }
+
+            if (address.Length == 0)
+            {
+                //record the error
+                Error = Error + "address must not remain blank : ";
+
+            }
+            if (address.Length > 50)
+            {
+                //record error
+                Error = Error + "address must be under 50 characters";
+            }
+
+            DateTime DateTemp;
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(CreatedAt);
+
+                /**DATE **/
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error += "The created date cannot be in the past : ";
+                }
+                if (DateTemp < DateTime.Now.Date.AddMonths(-3)) //dates can be 3 month in the past
+                {
+                    Error += "The created date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error += "The date was not a valid date : ";
+            }
+
+            if (!isSubscribed == true || isSubscribed == false)
+            {
+                Error += "Invalid subscription status : ";
+            }
+
+
+                return "";
 
         }
     }

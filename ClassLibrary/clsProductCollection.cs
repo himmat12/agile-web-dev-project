@@ -109,6 +109,22 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblProduct_Insert");
 
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@ProductID", mThisProduct.ProductID);
+            DB.AddParameter("@Name", mThisProduct.Name);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            DB.AddParameter("@InStock", mThisProduct.InStock);
+            DB.AddParameter("@Category", mThisProduct.Category);
+            DB.AddParameter("@Size", mThisProduct.Size);
+            DB.AddParameter("@ReleasedDate", mThisProduct.ReleasedDate);
+
+            DB.Execute("sproc_tblProduct_Update");
+        }
+
     }
 }
     

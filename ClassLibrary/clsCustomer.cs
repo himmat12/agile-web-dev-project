@@ -135,7 +135,7 @@ namespace ClassLibrary
 
         /*********VALID METHOD**********/
 
-        public string Valid(string name, string email, bool isSubscribed, string address, DateTime CreatedAt)
+        public string Valid(string name, string email, string PhoneNumber, string address, string CreatedAt)
         {
             string Error = "";
 
@@ -146,6 +146,7 @@ namespace ClassLibrary
                 Error = Error + "Name may not be blank : ";
 
             }
+            //if name is no greater than 50 characters
             if (name.Length > 50)
             {
                 //record error
@@ -200,9 +201,15 @@ namespace ClassLibrary
                 Error += "The date was not a valid date : ";
             }
 
-            if (!isSubscribed == true || isSubscribed == false)
+            if (PhoneNumber.Length == 0)
+
             {
-                Error += "Invalid subscription status : ";
+                Error = Error + "phonenumber must not remain blank : ";
+            }
+            if (PhoneNumber.Length > 50)
+            {
+                //record the error
+                Error = Error + "phonenumber must be under 50 characters : ";
             }
 
 

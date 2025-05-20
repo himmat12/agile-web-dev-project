@@ -35,7 +35,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             //capture the placement date
-            AnOrder.OrderDate = Convert.ToDateTime(DateTime.Now);
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             //capture the order status
             AnOrder.OrderStatus = OrderStatus;
             //capture the total price
@@ -44,11 +44,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             //capture staff id
             AnOrder.StaffID = Convert.ToInt32(StaffID);
-
-            //store the order in the session
-            Session["anOrder"] = AnOrder;
+            //capture paid
+            AnOrder.OrderPaid = chkIsPaid.Checked;
+            //create a new instance of the order collection
+            clsOrdersCollection OrderList = new clsOrdersCollection();
+            //set the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            //add the new record
+            OrderList.Add();
             //navigate to view page
-            Response.Redirect("OrderViewer.aspx");
+            Response.Redirect("OrderList.aspx");
         }
         else
         {

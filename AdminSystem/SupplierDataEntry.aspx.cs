@@ -33,8 +33,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Supplier.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
             Supplier.Active = Convert.ToBoolean(checkActive.Checked);
 
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+
+            SupplierList.ThisSupplier = Supplier;
+
+            SupplierList.Add();
+
             Session["Supplier"] = Supplier;
-            Response.Redirect("SupplierViewer.aspx");
+            Response.Redirect("SupplierList.aspx");
         }
 
     }

@@ -78,5 +78,31 @@ namespace Testing2
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //variable to store primary key
+            Int32 PrimaryKey = 0;
+            //set properties of test
+            TestOrder.OrderID = 1;
+            TestOrder.OrderDate = DateTime.Now;
+            TestOrder.OrderStatus = "pending";
+            TestOrder.OrderPaid = true;
+            TestOrder.OrderTotalPrice = 100;
+            TestOrder.CustomerID = 15;
+            TestOrder.StaffID = 1;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestOrder;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestOrder.OrderID = PrimaryKey;
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
+
+        }
+
     }
 }

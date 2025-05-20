@@ -32,4 +32,17 @@ public partial class _1_List : System.Web.UI.Page
         lstOrdersList.DataBind();
     }
 
+
+    protected void lstOrdersList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 in the session object to indicate a new record
+        Session["orderID"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("OrderdataEntry.aspx");
+    }
 }

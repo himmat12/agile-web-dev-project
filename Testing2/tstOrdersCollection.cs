@@ -15,6 +15,8 @@ namespace Testing2
         private List<clsOrders> TestList = new List<clsOrders>();
         //create the item of test data
         private clsOrders TestOrder = new clsOrders();
+        //variable to store primary key
+        Int32 PrimaryKey = 0;
 
         /******************INSTANCE OF THE CLASS TEST******************/
         [TestMethod]
@@ -81,8 +83,6 @@ namespace Testing2
         [TestMethod]
         public void AddMethodOK()
         {
-            //variable to store primary key
-            Int32 PrimaryKey = 0;
             //set properties of test
             TestOrder.OrderID = 1;
             TestOrder.OrderDate = DateTime.Now;
@@ -104,5 +104,36 @@ namespace Testing2
 
         }
 
+        public void UpdateMethodOK()
+        {
+            //set properties of the test
+            TestOrder.OrderDate = DateTime.Now;
+            TestOrder.OrderStatus = "pending";
+            TestOrder.OrderPaid = false;
+            TestOrder.OrderTotalPrice = 100;
+            TestOrder.CustomerID = 15;
+            TestOrder.StaffID = 1;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestOrder;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestOrder.OrderID = PrimaryKey;
+            //modify the test record
+            TestOrder.OrderDate = DateTime.Now;
+            TestOrder.OrderStatus = "shipped";
+            TestOrder.OrderPaid = true;
+            TestOrder.OrderTotalPrice = 105;
+            TestOrder.CustomerID = 15;
+            TestOrder.StaffID = 1;
+            //set the record based on the new test data
+            AllOrders.ThisOrder = TestOrder;
+            //update the record
+            AllOrders.Update();
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see if ThisOrder matches test data
+            Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
+        }
     }
 }

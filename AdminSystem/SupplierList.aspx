@@ -11,6 +11,9 @@
         <div>
             <asp:ListBox ID="lstSupplierList" runat="server" Height="391px" Width="355px"></asp:ListBox>
         </div>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" Width="84px" />
+        </p>
     </form>
 </body>
 </html>

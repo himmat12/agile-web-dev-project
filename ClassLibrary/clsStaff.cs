@@ -88,7 +88,7 @@ namespace ClassLibrary
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mContactNumber = Convert.ToString(DB.DataTable.Rows[0]["ContactNumber"]);
                 mSalary = (int)Convert.ToDecimal(DB.DataTable.Rows[0]["Salary"]);
-               
+
                 return true;
             }
             else
@@ -96,6 +96,84 @@ namespace ClassLibrary
                 // If the StaffId is not found, return false
                 return false;
             }
+        }
+        // Validating method for testing
+
+
+        public string Valid(string employmentDate, string email, string name, string contactNumber, string salary)
+        {
+            //Create a string variable to store the error message
+            String Error = "";
+            DateTime Datetemp;
+            // Validate the employment date
+            if (contactNumber.Length == 0)
+            {
+                Error = Error + "The contact number may not be blank. ";
+            }
+            // Validation logic here
+            if (contactNumber.Length > 6) {
+                Error = Error + "The Contact no must be less than 6 characters";
+            }
+            // email field 
+            if (email.Length == 0)
+            {
+                Error = Error + "The email may not be blank : ";
+            }
+
+            if (email.Length > 50)
+            {
+                Error = Error + "The email must be less than 50 characters : ";
+            }
+            // name field 
+            if (name.Length == 0)
+            {
+                Error = Error + "The name may not be blank : ";
+            }
+
+            if (name.Length > 50)
+            {
+                Error = Error + "The name must be less than 50 characters : ";
+            }
+
+            //Salary
+
+            if (Salary.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Salary may not be blank : ";
+            }
+
+            //if the post code is too long
+            if (Salary.Length > 9)
+            {
+                //record the error
+                Error = Error + "The Salary must be less than 9 characters : ";
+            }
+
+            try
+            {
+                Datetemp = Convert.ToDateTime(employmentDate);
+              
+               
+                    if (Datetemp < DateTime.Now.Date)
+                    {
+                        Error = Error + "The employment date cannot be in the past";
+                    }
+                    if (Datetemp > DateTime.Now.Date)
+                    {
+                        Error = Error + "The employment date cannot be in the future";
+                    }
+                
+            }
+            catch
+            {
+                Error = Error + "The data was not a valid date";
+            }
+
+            
+            
+            return Error;
+
         }
     }
 }

@@ -133,5 +133,46 @@ namespace Testing1
             Assert.AreEqual(AllSupplier.ThisSupplier, TestItem);
 
         }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+
+            clsSupplier TestItem = new clsSupplier();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Name = "Charly Ryl";
+            TestItem.Email = "charlryl@gmail.com";
+            TestItem.Phone = "5684351335";
+            TestItem.Address = "Manchester";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Active = true;
+
+            AllSupplier.ThisSupplier = TestItem;
+
+            PrimaryKey = AllSupplier.Add();
+
+            TestItem.Id = PrimaryKey;
+
+            // updating the properties
+
+            TestItem.Name = "Charly Pop";
+            TestItem.Email = "charlryl@example.com";
+            TestItem.Phone = "2222222222";
+            TestItem.Address = "Nepal";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Active = true;
+
+            AllSupplier.ThisSupplier = TestItem;
+
+            AllSupplier.Update();
+
+            AllSupplier.ThisSupplier.Find(PrimaryKey);
+
+            Assert.AreEqual(AllSupplier.ThisSupplier, TestItem);
+
+        }
     }
 }

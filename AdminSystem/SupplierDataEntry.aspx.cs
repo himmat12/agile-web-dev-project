@@ -11,11 +11,35 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        SupplierId = Convert.ToInt32(Session["SupplierId"]);
 
+        if(IsPostBack == false)
+        {
+            if(SupplierId != -1)
+            {
+                DisplaySupplier();
+            }
+        }
     }
 
+    void DisplaySupplier()
+    {
+        clsSupplierCollection SupplierList = new clsSupplierCollection();
+
+        SupplierList.ThisSupplier.Find(SupplierId);
+
+        txtId.Text = SupplierList.ThisSupplier.Id.ToString();
+        txtName.Text = SupplierList.ThisSupplier.Name;
+        txtEmail.Text = SupplierList.ThisSupplier.Email;
+        txtPhone.Text = SupplierList.ThisSupplier.Phone;
+        txtAddress.Text = SupplierList.ThisSupplier.Address;
+        txtDateAdded.Text = SupplierList.ThisSupplier.DateAdded.ToString();
+        checkActive.Checked = SupplierList.ThisSupplier.Active;
+    }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
@@ -35,9 +59,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             clsSupplierCollection SupplierList = new clsSupplierCollection();
 
-            SupplierList.ThisSupplier = Supplier;
 
-            SupplierList.Add();
+            if(SupplierId == -1)
+            {
+                SupplierList.ThisSupplier = Supplier;
+                SupplierList.Add();
+            }
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplierId);
+
+                SupplierList.ThisSupplier = Supplier;
+
+                SupplierList.Update();
+            }
+
 
             Session["Supplier"] = Supplier;
             Response.Redirect("SupplierList.aspx");

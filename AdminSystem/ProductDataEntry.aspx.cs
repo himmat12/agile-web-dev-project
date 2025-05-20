@@ -50,10 +50,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnProduct.Price = Convert.ToDecimal(Price);
             //capture the release date
             AnProduct.ReleasedDate = Convert.ToDateTime(ReleasedDate);
-            //store the product in the session object
-            Session["AnProduct"] = AnProduct;
-            //navigate to the view page
-            Response.Redirect("ProductViewer.aspx");
+            //capture the in stock status
+            AnProduct.InStock = chkInStock.Checked;
+            //create a new instance of the product collection
+            clsProductCollection ProductList = new clsProductCollection();
+            //set the ThisProduct property
+            ProductList.ThisProduct = AnProduct;
+            //add the new record
+            ProductList.Add();
+            //redirect to the list page
+            Response.Redirect("ProductList.aspx");
         }
         else
         {

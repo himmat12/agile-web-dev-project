@@ -118,5 +118,34 @@ namespace Testing3
             Assert.AreEqual(AllProducts.Count, TestList.Count);
         }
 
+        //ADD METHOD//
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsProductCollection AllProducts = new clsProductCollection();
+            //create the item of test data
+            clsProduct TestItem = new clsProduct();
+            //set its properties
+            TestItem.InStock = true;
+            TestItem.ProductID = 1;
+            TestItem.Name = "Test Name";
+            TestItem.Price = 9.99m;
+            TestItem.Category = "Test Category";
+            TestItem.Size = "M";
+            TestItem.ReleasedDate = DateTime.Now;
+            //set ThisProduct to the test data
+            AllProducts.ThisProduct = TestItem;
+            //add the recored
+            int PrimaryKey = AllProducts.Add();
+            //set the primary key of the test data
+            TestItem.ProductID = PrimaryKey;
+            //find the record
+            AllProducts.ThisProduct.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllProducts.ThisProduct, TestItem);
+        }
+
     }
 }

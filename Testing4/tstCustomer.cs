@@ -15,7 +15,8 @@ namespace Testing4
         string Address = "Le4 4ft";
         string CreatedAt = DateTime.Now.ToShortDateString();
         // string for error messages
-        private string Error = "";
+        //private String Error = "";
+
 
 
 
@@ -590,6 +591,27 @@ namespace Testing4
         }
 
         /**********CREATED AT*********/
+
+        [TestMethod]
+        public void CreatedAtExtremeMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
 
     }
 

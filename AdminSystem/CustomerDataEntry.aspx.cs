@@ -21,7 +21,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer Customer = new clsCustomer();
         //capture customer id
-        string CustomerId = txtCustomerId.Text;
+        string CustomerCustomerId = txtCustomerId.Text;
         //capture the customer name
         string CustomerName = txtName.Text;
         //capture the customer email
@@ -29,38 +29,49 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create the customer phone number
         string CustomerPhoneNumber = txtPhoneNumber.Text;
         //capture if Subscribed check box
-        bool CustomerIsSubscribed = chkIsSubscribed.Checked;
+        string CustomerIsSubscribed = chkIsSubscribed.Text;
         //capture address
         string CustomerAddress = txtAddress.Text;
+
         //capture created at
         string CustomerCreatedAt = txtCreatedAt.Text;
 
+        string Error = "";
+        //Error = Customer.Valid(CustomerAddress, CustomerCreatedAt, CustomerName);
+        //if (Error == "")
+        {
+            //create a new instance of clsCustomer
+            //  clsCustomerCollection  = new clsCustomer();
+            //capture customer id
+            Customer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
+            //capture the customer name
+            Customer.Name = txtName.Text;
+            //capture the customer email
+            Customer.Email = txtEmail.Text;
+            //create the customer phone number
+            Customer.PhoneNumber = txtPhoneNumber.Text;
+            //capture if Subscribed check box
+            Customer.IsSubscribed = chkIsSubscribed.Checked;
+            //capture address
+            Customer.Address = txtAddress.Text;
 
-        //capture customer name
-        Customer.Name = CustomerName;
-        //capture customer email
-        Customer.Email = CustomerEmail;
-        //capture if subscribed
-        Customer.IsSubscribed = chkIsSubscribed.Checked;
-        //capture phone number
-        Customer.PhoneNumber = CustomerPhoneNumber;
-        //capture the creation date
-        Customer.CreatedAt = Convert.ToDateTime(DateTime.Now);
-        //capture customer id
-        Customer.CustomerId = Convert.ToInt32(CustomerId);
-        //capture address
-        Customer.Address = CustomerAddress;
+            //capture created at
+            Customer.CreatedAt = Convert.ToDateTime(txtCreatedAt.Text);
 
-        //store the customer in the session 
-        Session["customer"] = Customer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
 
+        }
     }
 
-    protected void BtnCancel_Click(object sender, EventArgs e)
-    {
-    }
+    //    //store the customer in the session 
+    //    Session["customer"] = Customer;
+    //    //navigate to the view page
+    //    Response.Redirect("CustomerViewer.aspx");
+
+    //}
+
+    //protected void BtnCancel_Click(object sender, EventArgs e)
+    //{
+    //}
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -84,7 +95,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsSubscribed.Checked = customer.IsSubscribed;
             txtPhoneNumber.Text = customer.PhoneNumber;
         }
-
-
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    { }
 }

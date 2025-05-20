@@ -31,4 +31,12 @@ public partial class ProductList : System.Web.UI.Page
         //bind the data to the list
         lstProductList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 in the session object to indicate this is a new record
+        Session["ProductID"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("ProductDataEntry.aspx");
+    }
 }

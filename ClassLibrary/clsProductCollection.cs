@@ -5,6 +5,24 @@ namespace ClassLibrary
 {
     public class clsProductCollection
     {
+        //private data member for ThisProduct
+        private clsProduct mThisProduct = new clsProduct();
+
+        //public property for ThisProduct
+        public clsProduct ThisProduct
+        {
+            get
+            {
+                //return the private data
+                return mThisProduct;
+            }
+            set
+            {
+                //set the private data
+                mThisProduct = value;
+            }
+        }
+
         //private data member for the list
         private List<clsProduct> mProductList = new List<clsProduct>();
 
@@ -36,10 +54,6 @@ namespace ClassLibrary
                 //later
             }
         }
-
-        public clsProduct ThisProduct { get; set; }
-
-
         //constructor for the class
         public clsProductCollection()
         {
@@ -77,6 +91,23 @@ namespace ClassLibrary
                 //increment the index to move to the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds the record to the database based on the values of ThisProduct
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Name", mThisProduct.Name);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            DB.AddParameter("@InStock", mThisProduct.InStock);
+            DB.AddParameter("@Category", mThisProduct.Category);
+            DB.AddParameter("@Size", mThisProduct.Size);
+            DB.AddParameter("@ReleasedDate", mThisProduct.ReleasedDate);
+            //execute the stored procedure
+            return DB.Execute("sproc_tblProduct_Insert");
+
         }
     }
 }

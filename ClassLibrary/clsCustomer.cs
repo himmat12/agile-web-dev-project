@@ -135,9 +135,12 @@ namespace ClassLibrary
 
         /*********VALID METHOD**********/
 
-        public string Valid(string name, string email, bool isSubscribed, string address, DateTime CreatedAt)
+        public string Valid(string name, string email, string PhoneNumber, string address, string CreatedAt)
         {
+            //create a string variable to store the error
             string Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
 
             //if the name is blank
             if (name.Length == 0)
@@ -146,15 +149,16 @@ namespace ClassLibrary
                 Error = Error + "Name may not be blank : ";
 
             }
+            //if name is no greater than 50 characters
             if (name.Length > 50)
             {
                 //record error
                 Error = Error + "name must be under 50 characters";
             }
-           
 
-                //if email is blank
-                if (email.Length == 0)
+
+            //if email is blank
+            if (email.Length == 0)
             {
                 //record the error
                 Error = Error + "email must not remain blank : ";
@@ -178,36 +182,32 @@ namespace ClassLibrary
                 Error = Error + "address must be under 50 characters";
             }
 
-            DateTime DateTemp;
+            DateTemp = Convert.ToDateTime(CreatedAt);
+            DateTime DateComp = DateTime.Now.Date;
 
-            try
+            if (DateTemp < DateTime.Now.Date)
             {
-                DateTemp = Convert.ToDateTime(CreatedAt);
-
-                /**DATE **/
-                if (DateTemp > DateTime.Now.Date)
-                {
-                    Error += "The created date cannot be in the past : ";
-                }
-                if (DateTemp < DateTime.Now.Date.AddMonths(-3)) //dates can be 3 month in the past
-                {
-                    Error += "The created date cannot be in the future : ";
-                }
+                Error += "the created date cannot be in the past : ";
             }
-            catch
+
+
+
+
+            if (PhoneNumber.Length == 0)
+
+            {
+                Error = Error + "phonenumber must not remain blank : ";
+            }
+            if (PhoneNumber.Length > 50)
             {
                 //record the error
-                Error += "The date was not a valid date : ";
-            }
-
-            if (!isSubscribed == true || isSubscribed == false)
-            {
-                Error += "Invalid subscription status : ";
+                Error = Error + "phonenumber must be under 50 characters : ";
             }
 
 
-                return "";
+            return "";
 
         }
+
     }
 }

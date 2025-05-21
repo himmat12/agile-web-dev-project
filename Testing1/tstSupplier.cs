@@ -144,7 +144,7 @@ namespace Testing1
 
             Found = Supplier.Find(SupplierId);
 
-            if (Supplier.Name != "Himmat")
+            if (Supplier.Name != "Himmat Rai")
             {
                 OK = false;
             }

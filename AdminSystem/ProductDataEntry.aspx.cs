@@ -31,18 +31,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     private void DisplayProduct()
     {
-        clsProductCollection Products = new clsProductCollection();
-        //Products.ThisProduct = new clsProduct();
-        Products.ThisProduct.Find(ProductID);
+        clsProduct AnProduct = new clsProduct();
+        AnProduct.Find(ProductID);
 
-        txtProductID.Text = Products.ThisProduct.ProductID.ToString();
-        txtName.Text = Products.ThisProduct.Name.ToString();
-        txtPrice.Text = Products.ThisProduct.Price.ToString("0.00");
-        chkInStock.Checked = Products.ThisProduct.InStock;
-        txtCategory.Text = Products.ThisProduct.Category.ToString();
-        txtSize.Text = Products.ThisProduct.Size.ToString();
-        txtReleasedDate.Text = Products.ThisProduct.ReleasedDate.ToString("yyyy-MM-dd");
+        txtProductID.Text = AnProduct.ProductID.ToString();
+        txtName.Text = AnProduct.Name;
+        txtPrice.Text = AnProduct.Price.ToString("0.00");
+        chkInStock.Checked = AnProduct.InStock;
+        txtCategory.Text = AnProduct.Category;
+        txtSize.Text = AnProduct.Size;
+        txtReleasedDate.Text = AnProduct.ReleasedDate.ToString("yyyy-MM-dd");
     }
+
 
 
 

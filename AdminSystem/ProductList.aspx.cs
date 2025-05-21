@@ -39,4 +39,25 @@ public partial class ProductList : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("ProductDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        Int32 ProductID;
+        //if a record has been selected from the list
+        if (lstProductList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to be edited
+            ProductID = Convert.ToInt32(lstProductList.SelectedValue);
+            //store the data in the session object
+            Session["ProductID"] = ProductID;
+            //redirect to the data entry page
+            Response.Redirect("ProductDataEntry.aspx");
+        }
+        else
+        {
+            //display an error message
+            lblError.Text = "Please select a record to edit";
+        }
+    }
 }

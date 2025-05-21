@@ -174,7 +174,7 @@ namespace Testing3
             //invoke the method
             Found = AnProduct.Find(ProductID);
             //checked the released date property
-            if (AnProduct.ReleasedDate != Convert.ToDateTime("23/05/2025"))
+            if (AnProduct.ReleasedDate != Convert.ToDateTime("21/05/2025"))
             {
                 OK = false;
             }

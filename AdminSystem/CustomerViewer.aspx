@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    This is the Customer Viewer Page
+    
     <form id="form1" runat="server">
         <div>
         </div>

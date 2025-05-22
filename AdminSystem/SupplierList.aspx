@@ -23,7 +23,7 @@
             <asp:TextBox ID="txtAddress" runat="server" Width="207px"></asp:TextBox>
         </p>
         <p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 530px; position: absolute; right: 220px; height: 19px;">lsiauhvlidib</asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 530px; position: absolute; right: 220px; height: 19px;"></asp:Label>
             <asp:Button ID="btnFilter" runat="server" Text="Apply Filter" width="83px" OnClick="btnFilter_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" Width="83px" OnClick="btnClearFilter_Click" />

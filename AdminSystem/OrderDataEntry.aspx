@@ -11,7 +11,8 @@
         <div>
             Enter the details of an order below:
 
-        </div>
+        </div> 
+        <p>
         <asp:Label ID="lblOrderID" runat="server" style="z-index: 1; left: 10px; top: 46px; position: absolute; width: 121px" Text="Order ID: "></asp:Label>
         <asp:TextBox ID="txtOrderID" runat="server" style="z-index: 1; left: 147px; top: 40px; position: absolute; bottom: 355px;" height="22px" width="128px"></asp:TextBox>
             <asp:Label ID="lblPlacementDate" runat="server" style="z-index: 1; left: 10px; top: 82px; position: absolute; width: 121px" Text="Placement Date: " height="19px"></asp:Label>
@@ -30,10 +31,14 @@
 
         <asp:Label ID="lblCustomerID" runat="server" style="z-index: 1; left: 10px; top: 185px; position: absolute" Text="Customer ID: " height="19px" width="121px"></asp:Label>
         <asp:TextBox ID="txtStaffID" runat="server" style="z-index: 1; left: 147px; top: 214px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 21px; top: 322px; position: absolute" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="height: 26px; position: relative; top: 289px; left: 104px" Text="Cancel" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 21px; top: 321px; position: absolute" Text="OK" height="26px" width="60px" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 25px; top: 282px; position: absolute; right: 503px; bottom: 341px;"></asp:Label>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 317px; top: 43px; position: absolute" Text="Find" />
+       
+            
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="height: 26px; position: absolute; top: 321px; left: 153px; width: 60px;" Text="Cancel" />
+
+        </p>
     </form>
 </body>
 </html>

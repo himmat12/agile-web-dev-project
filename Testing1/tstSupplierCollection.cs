@@ -205,5 +205,48 @@ namespace Testing1
 
             Assert.IsFalse( Found );
         }
+
+        [TestMethod]
+        public void ReportByAddressMethodOK() {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+
+            FilteredSuppliers.ReportByAddress("");
+
+            Assert.AreEqual(AllSupplier.Count, FilteredSuppliers.Count );
+
+        }
+
+        [TestMethod]
+        public void ReportByAddressNoneFound()
+        {
+
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+
+            Boolean OK = true;
+
+            FilteredSuppliers.ReportByAddress("Manchester");
+
+            if( FilteredSuppliers.Count > 1)
+            {
+                if (FilteredSuppliers.SupplierList[0].Id != 11)
+                {
+                    OK = false;
+                }
+
+                if (FilteredSuppliers.SupplierList[1].Id != 15)
+                {
+                    OK = false;
+                }
+            }
+            else 
+            {  
+                OK = false; 
+            }
+
+                Assert.IsTrue(OK);
+
+        }
     }
 }

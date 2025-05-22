@@ -11,57 +11,11 @@ namespace ClassLibrary
     {
         public clsSupplierCollection() {
 
-            //clsSupplier TestItem = new clsSupplier();
-
-            //TestItem.Id = 1;
-            //TestItem.Name = "Himmat";
-            //TestItem.Email = "himmat@gmail.com";
-            //TestItem.Phone = "1234567898";
-            //TestItem.Address = "Leicester";
-            //TestItem.DateAdded = DateTime.Now;
-            //TestItem.Active = true;
-
-            //supplierList.Add(TestItem);
-
-            //TestItem = new clsSupplier();
-
-            //TestItem.Id = 2;
-            //TestItem.Name = "John";
-            //TestItem.Email = "john@gmail.com";
-            //TestItem.Phone = "1234567898";
-            //TestItem.Address = "York";
-            //TestItem.DateAdded = DateTime.Now;
-            //TestItem.Active = true;
-
-            //supplierList.Add(TestItem);
-
-            Int32 Index = 0;
-
-            Int32 RecordCount = 0;
-
             clsDataConnection DB = new clsDataConnection();
 
             DB.Execute("sproc_tblSupplier_SelectAll");
 
-            RecordCount = DB.Count;
-
-            while (Index < RecordCount)
-            {
-                clsSupplier Supplier = new clsSupplier();
-
-                Supplier.Id = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
-                Supplier.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
-                Supplier.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                Supplier.Phone = Convert.ToString(DB.DataTable.Rows[Index]["Phone"]);
-                Supplier.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                Supplier.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedAt"]);
-                Supplier.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsActive"]);
-
-                supplierList.Add(Supplier);
-
-                Index++;
-
-            }
+            PopulateArray(DB);
 
         }
 
@@ -109,6 +63,45 @@ namespace ClassLibrary
             DB.AddParameter("@SupplierId", mThisSupplier.Id);
 
             DB.Execute("sproc_tblSupplier_Delete");
+        }
+
+        public void ReportByAddress(string Address)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Address", Address);
+
+            DB.Execute("sproc_tblSupplier_FilterByAddress");
+
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+
+            Int32 RecordCount;
+
+            RecordCount = DB.Count;
+
+            supplierList = new List<clsSupplier>();
+
+            while(Index < RecordCount)
+            {
+                clsSupplier Supplier = new clsSupplier();
+
+                Supplier.Id = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
+                Supplier.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                Supplier.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                Supplier.Phone = Convert.ToString(DB.DataTable.Rows[Index]["Phone"]);
+                Supplier.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                Supplier.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedAt"]);
+                Supplier.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsActive"]);
+
+                supplierList.Add(Supplier);
+
+                Index++;
+            }
         }
     }
 }

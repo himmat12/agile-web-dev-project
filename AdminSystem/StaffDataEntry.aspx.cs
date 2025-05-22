@@ -8,29 +8,55 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    public int StaffId { get; private set; }
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
     }
+
+
+
     protected void BtnOk_Click(object sender, EventArgs e)
     {
         //create a new instance of clsStaff
         clsStaff Staff = new clsStaff();
+
         //capture the Name
-        Staff.StaffId = Convert.ToInt32(txtStaffID.Text);
+         Staff.StaffId = Convert.ToInt32(txtStaffID.Text);
         Staff.Name = txtName.Text;
         Staff.Email = txtEmail.Text;
         Staff.ContactNumber = txtContactNumber.Text;
-
-        // Fix: Assign Salary as a string since clsStaff.Salary is of type string
         Staff.Salary = txtSalary.Text;
-
         Staff.EmploymentDate = Convert.ToDateTime(txtEmploymentDate.Text);
         Staff.IsActive = chkIsActive.Checked;
 
-        //store the Staff on the session object
-        Session["Staff"] = Staff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+       
+
+        // Fix: Declare the 'Error' variable before using it
+        string Error = "";
+
+        // Fix: Correct the syntax by closing the method call with a closing parenthesis
+        Error = Staff.Valid(Staff.Name, Staff.Email, Staff.ContactNumber, Staff.Salary, Staff.EmploymentDate.ToString());
+
+        //validate the data on the web form
+        if (Error == "")
+        {
+            Staff.ContactNumber = txtContactNumber.Text;
+            Staff.Email = txtEmail.Text;
+            Staff.Name = txtName.Text;
+            Staff.EmploymentDate = Convert.ToDateTime(txtEmploymentDate.Text);
+            Staff.IsActive = chkIsActive.Checked;
+            Staff.Salary = txtSalary.Text;
+            Session["Staff"] = Staff;
+
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {             //display the error message
+            lblError.Text = "There were problems with the data entered" + Error;
+        }
     }
     protected void BtnFind_Click(object sender, EventArgs e)
     {   //create an instance of clsStaff

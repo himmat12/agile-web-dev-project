@@ -12,10 +12,10 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    Int32 CustomerID;
+    public int CustomerId { get; private set; }
     protected void Page_Load(object sender, EventArgs e)
     {
-        CustomerID = Convert.ToInt32(Session["customerID"]);
+
     }
 
     protected void BtnOK_Click(object sender, EventArgs e)
@@ -23,6 +23,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //create a new instance of clsCustomer
         clsCustomer Customer = new clsCustomer();
+
+
         //capture customer id
         Customer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
         //capture the customer name
@@ -35,18 +37,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Customer.IsSubscribed = chkIsSubscribed.Checked;
         //capture address
         Customer.Address = txtAddress.Text;
-
         //capture created at
-        string CustomerCreatedAt = txtCreatedAt.Text;
+        Customer.CreatedAt = Convert.ToDateTime(txtCreatedAt.Text);
 
+
+        // Fix: Declare the 'Error' variable before using it
+        string Error = "";
+        Error = Customer.Valid(Customer.Name, Customer.Email, Customer.PhoneNumber, Customer.Address, Customer.CreatedAt.ToString());
+
+        if (Error == "")
+        {
+            Customer.Name = txtName.Text;
+            Customer.Email = txtEmail.Text;
+            Customer.PhoneNumber = txtPhoneNumber.Text;
+            Customer.IsSubscribed = chkIsSubscribed.Checked;
+            Customer.Address = txtAddress.Text;
+            Customer.CreatedAt = Convert.ToDateTime(txtCreatedAt.Text);
+            Session["Customer"] = Customer;
+
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+
+        else
+        {
+            lblError.Text = "There were problems with the data entered" + Error;
+
+        }
     }
 
-    
 
-    protected void BtnCancel_Click(object sender, EventArgs e)
-    {
-
-    }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -63,6 +83,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             //display the values of the properties in the form
+            txtName.Text = Customer.Name;
+            txtCustomerId.Text = CustomerId.ToString();
             txtAddress.Text = Customer.Address;
             txtCreatedAt.Text = Customer.CreatedAt.ToString("dd-mm-yyyy");
             txtEmail.Text = Customer.Email;
@@ -70,14 +92,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsSubscribed.Checked = Customer.IsSubscribed;
             txtPhoneNumber.Text = Customer.PhoneNumber;
         }
-        else
-        {
-            lblError.Text = "Customer not found";
-        }
-
     }
+       protected void BtnCancel_Click(object sender, EventArgs e)
+    {
 
-    protected void btnCancel_Click(object sender, EventArgs e)
-    { 
     }
 }

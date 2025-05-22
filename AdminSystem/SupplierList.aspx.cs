@@ -77,4 +77,45 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection Suppliers = new clsSupplierCollection();
+
+        Suppliers.ReportByAddress(txtAddress.Text);
+
+        lstSupplierList.DataSource = Suppliers.SupplierList;
+
+        // set the name of the primary key
+        lstSupplierList.DataValueField = "Id";
+
+        // set the data field to display
+        lstSupplierList.DataTextField = "Address";
+
+
+        lstSupplierList.DataBind();
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection Suppliers = new clsSupplierCollection();
+
+        Suppliers.ReportByAddress("");
+
+        txtAddress.Text = "";
+
+        lstSupplierList.DataSource = Suppliers.SupplierList;
+
+        // set the name of the primary key
+        lstSupplierList.DataValueField = "Id";
+
+        // set the data field to display
+        lstSupplierList.DataTextField = "Address";
+
+
+        lstSupplierList.DataBind();
+
+
+    }
 }

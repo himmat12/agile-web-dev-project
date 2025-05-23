@@ -45,18 +45,18 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
-      //   [TestMethod]
+        //   [TestMethod]
 
-    //     public void CountPropertyOK()
-     //   {
-      //    clsStaffCollection AllStaff = new clsStaffCollection();
+        //     public void CountPropertyOK()
+        //   {
+        //    clsStaffCollection AllStaff = new clsStaffCollection();
 
-       //  Int32 SomeCount = 2;
+        //  Int32 SomeCount = 2;
 
-     //  AllStaff.Count = SomeCount;
+        //  AllStaff.Count = SomeCount;
 
-      //   Assert.AreEqual(AllStaff.Count, SomeCount);
-     //   }
+        //   Assert.AreEqual(AllStaff.Count, SomeCount);
+        //   }
 
         [TestMethod]
         public void ThisStaffPropertyOK()
@@ -104,13 +104,41 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.Count, TestList.Count);
         }
-     //   [TestMethod]
-       // public void TwoRecordsPresent()
-    //    { 
-          //  clsStaffCollection AllStaff = new clsStaffCollection();
-      //  Assert.AreEqual(AllStaff.Count, 2);
-      //     }
-        
-       
+        //   [TestMethod]
+        // public void TwoRecordsPresent()
+        //    { 
+        //  clsStaffCollection AllStaff = new clsStaffCollection();
+        //  Assert.AreEqual(AllStaff.Count, 2);
+        //     }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+
+            clsStaff TestItem = new clsStaff();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.StaffId = 4;
+            TestItem.Name = "Yayy";
+            TestItem.Email = "yuppp@gmail.com";
+            TestItem.ContactNumber = "1234567";
+            TestItem.Salary = "1000";
+            TestItem.EmploymentDate = DateTime.Now;
+            TestItem.IsActive = true;
+
+            AllStaff.ThisStaff = TestItem;
+
+            PrimaryKey = AllStaff.Add();
+
+            TestItem.StaffId = PrimaryKey;
+
+            AllStaff.ThisStaff.Find(PrimaryKey);
+
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+        }
+
     }
 }

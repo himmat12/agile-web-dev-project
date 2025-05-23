@@ -37,21 +37,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
 
         // Fix: Correct the syntax by closing the method call with a closing parenthesis
-        Error = Staff.Valid(Staff.Name, Staff.Email, Staff.ContactNumber, Staff.Salary, Staff.EmploymentDate.ToString());
+        Error = Staff.Valid(Staff.EmploymentDate.ToString("yyyy-MM-dd"),  Staff.Email, Staff.Name, Staff.ContactNumber, Staff.Salary);
 
         //validate the data on the web form
         if (Error == "")
         {
+            Staff.StaffId = Convert.ToInt32(txtStaffID.Text);
             Staff.ContactNumber = txtContactNumber.Text;
             Staff.Email = txtEmail.Text;
             Staff.Name = txtName.Text;
             Staff.EmploymentDate = Convert.ToDateTime(txtEmploymentDate.Text);
-            Staff.IsActive = chkIsActive.Checked;
             Staff.Salary = txtSalary.Text;
-            Session["Staff"] = Staff;
+            Staff.IsActive = Convert.ToBoolean(chkIsActive.Checked);
 
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = Staff;
+            StaffList.Add();
+
+
+            Session["Staff"] = Staff;
             //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("StaffList.aspx");
         }
         else
         {             //display the error message

@@ -8,8 +8,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="width: 466px; height: 42px">
+            <br />
+            <br />
         </div>
+        <p style="margin-left: 80px">
+            Are you sure you want to delete this?</p>
+        <p style="margin-left: 80px">
+            &nbsp;</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" Text="Yes" Width="81px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnNo" runat="server" height="26px" OnClick="btnNo_Click" Text="No" width="81px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </form>
+    <p>
+        &nbsp;</p>
 </body>
 </html>

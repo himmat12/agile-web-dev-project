@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void BtnOK_Click(object sender, EventArgs e)
+    protected void btnOK_Click(object sender, EventArgs e)
     {
 
         //create a new instance of clsCustomer
@@ -38,10 +38,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture address
         Customer.Address = txtAddress.Text;
         //capture created at
-        Customer.CreatedAt = Convert.ToDateTime(txtCreatedAt.Text);
+        Customer.CreatedAt = Convert.ToDateTime(DateTime.Now);
 
 
-        // Fix: Declare the 'Error' variable before using it
+        // Declare the 'Error' variable before using it
         string Error = "";
         Error = Customer.Valid(Customer.Name, Customer.Email, Customer.PhoneNumber, Customer.Address, Customer.CreatedAt.ToString());
 
@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Customer.PhoneNumber = txtPhoneNumber.Text;
             Customer.IsSubscribed = chkIsSubscribed.Checked;
             Customer.Address = txtAddress.Text;
-            Customer.CreatedAt = Convert.ToDateTime(txtCreatedAt.Text);
+            Customer.CreatedAt = Convert.ToDateTime(DateTime.Now);
             Session["Customer"] = Customer;
 
             //navigate to the view page
@@ -92,9 +92,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsSubscribed.Checked = Customer.IsSubscribed;
             txtPhoneNumber.Text = Customer.PhoneNumber;
         }
-    }
-       protected void BtnCancel_Click(object sender, EventArgs e)
-    {
-
     }
 }

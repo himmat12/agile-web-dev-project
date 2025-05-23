@@ -14,7 +14,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Button ID="btnFind" runat="server" Height="28px" Text="Find" Width="72px" />
+            <asp:Button ID="btnFind" runat="server" Height="28px" Text="Find" Width="72px" OnClick="btnFind_Click" />
         </div>
         <p>
             &nbsp;</p>
@@ -34,7 +34,7 @@
         <asp:TextBox ID="txtCreatedAt" runat="server" style="z-index: 1; left: 167px; top: 284px; position: absolute"></asp:TextBox>
         <asp:CheckBox ID="chkIsSubscribed" runat="server" style="z-index: 1; left: 154px; top: 325px; position: absolute" Text="IsSubscribed" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 46px; top: 353px; position: absolute" Text="lblError"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 53px; top: 398px; position: absolute; width: 58px; height: 24px; right: 588px;" Text="OK" />
+        <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 53px; top: 398px; position: absolute; width: 58px; height: 24px; right: 588px;" Text="OK" OnClick="btnOK_Click" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 397px; position: absolute; left: 157px; height: 25px;" Text="Cancel" />
         <p>
             &nbsp;</p>

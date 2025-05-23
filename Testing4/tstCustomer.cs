@@ -10,8 +10,8 @@ namespace Testing4
     {
         //good test data
         string Name = "Sam";
-        string Email = "sally@gmail.com";
-        string PhoneNumber = "07348858373";
+        string Email = "Sam@gmail.com";
+        string PhoneNumber = "1234567890";
         string Address = "Le4 4ft";
         string CreatedAt = DateTime.Now.ToShortDateString();
         // string for error messages

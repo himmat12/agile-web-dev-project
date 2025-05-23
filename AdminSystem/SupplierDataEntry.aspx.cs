@@ -174,4 +174,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             return true;
         }
     }
+
+    protected void btnCancle_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("SupplierList.aspx");
+    }
 }

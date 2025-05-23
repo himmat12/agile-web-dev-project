@@ -59,8 +59,9 @@ namespace ClassLibrary
                 Index++;
             }
         }
-            //private data memeber for the list
-            List<clsStaff> mStaffList = new List <clsStaff>();
+        //private data memeber for the list
+        List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
         public List<clsStaff> StaffList
         {
             get
@@ -87,11 +88,29 @@ namespace ClassLibrary
             }
         }
 
-        public clsStaff ThisStaff { get; set; }
-
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
         public int Add()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@Email", mThisStaff.Email);
+            DB.AddParameter("@ContactNumber", mThisStaff.ContactNumber);
+            DB.AddParameter("@Salary", mThisStaff.Salary);
+            DB.AddParameter("@IsActive", mThisStaff.IsActive);
+            DB.AddParameter("@EmploymentDate", mThisStaff.EmploymentDate);
+
+            return DB.Execute("sproc_tblStaff_Insert");
         }
 
         public void Update()

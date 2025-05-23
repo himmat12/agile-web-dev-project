@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsAddress.cs" />
     <Compile Include="clsCustomer.cs" />
+    <Compile Include="clsCustomerCollection.cs" />
     <Compile Include="clsCustomers.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrders.cs" />
@@ -50,8 +51,10 @@
     <Compile Include="clsProduct.cs" />
     <Compile Include="clsProductCollection.cs" />
     <Compile Include="clsStaff.cs" />
+    <Compile Include="clsStaffCollection.cs" />
     <Compile Include="clsSupplier.cs" />
     <Compile Include="clsSupplierCollection.cs" />
+    <Compile Include="clsSupplierUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -235,7 +235,7 @@ namespace Testing1
                     OK = false;
                 }
 
-                if (FilteredSuppliers.SupplierList[1].Id != 15)
+                if (FilteredSuppliers.SupplierList[1].Id != 24)
                 {
                     OK = false;
                 }

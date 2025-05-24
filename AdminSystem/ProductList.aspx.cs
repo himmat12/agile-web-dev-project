@@ -82,4 +82,39 @@ public partial class ProductList : System.Web.UI.Page
         }
 
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //creat an inst6ance of the product object
+        clsProductCollection Products = new clsProductCollection();
+        //retrieve the value of category from presentation layer
+        Products.ReportByCategory(txtFilterCategory.Text);
+        //set the data source to the filtered list of products in the collection
+        lstProductList.DataSource = Products.ProductList;
+        //set the name of the primary key
+        lstProductList.DataValueField = "ProductID";
+        //set the data field to display
+        lstProductList.DataTextField = "Category";
+        //bind the data to the list
+        lstProductList.DataBind();
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the product object
+        clsProductCollection Products = new clsProductCollection();
+        //set an empty string as the filter
+        Products.ReportByCategory("");
+        //clear any existing filter to tidy up the display
+        txtFilterCategory.Text = "";
+        //set the data source to the list of products in the collection
+        lstProductList.DataSource = Products.ProductList;
+        //set the name of the primary key
+        lstProductList.DataValueField = "ProductID";
+        //set the data field to display
+        lstProductList.DataTextField = "Category";
+        //bind the data to the list
+        lstProductList.DataBind();
+    }
 }

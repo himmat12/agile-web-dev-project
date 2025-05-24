@@ -223,5 +223,64 @@ namespace Testing3
             //test to see that the two values are different
             Assert.IsFalse(Found);
         }
+
+        //FILTER METHOD//
+
+        [TestMethod]
+        public void ReportByCategoryMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsProductCollection AllProducts = new clsProductCollection();
+            //create an instance of the filtered data
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            //apply a blank string
+            FilteredProducts.ReportByCategory("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllProducts.Count, FilteredProducts.Count);
+
+
+        }
+
+        [TestMethod]
+        public void ReportByCategoryNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            //apply a category that doesn't exist
+            FilteredProducts.ReportByCategory("xxx xxx xxx");
+            //test to see that the two values are the same
+            Assert.AreEqual(0, FilteredProducts.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCategoryTestDataFound()
+        {
+            //create  an instance of the filtered data 
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            //variable to store the outcome of the search
+            Boolean OK = true;
+            //apply a category that does exist
+            FilteredProducts.ReportByCategory("Kids");
+            //check that the correct number of records are found
+            if (FilteredProducts.Count == 2)
+            {
+                //check that the first record is correct
+                if (FilteredProducts.ProductList[0].ProductID != 1)
+                {
+                    OK = false;
+                }
+                //check that the second record is correct
+                if (FilteredProducts.ProductList[1].ProductID != 44)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records found
+            Assert.IsTrue(OK);
+        }
+        }
     }
-}

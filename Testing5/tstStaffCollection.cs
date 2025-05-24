@@ -139,6 +139,47 @@ namespace Testing5
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
 
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
 
+            clsStaff TestItem = new clsStaff();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.StaffId = 4;
+            TestItem.Name = "Yayy";
+            TestItem.Email = "yuppp@gmail.com";
+            TestItem.ContactNumber = "1234567";
+            TestItem.Salary = "1000";
+            TestItem.EmploymentDate = DateTime.Now;
+            TestItem.IsActive = true;
+
+            AllStaff.ThisStaff = TestItem;
+
+            PrimaryKey = AllStaff.Add();
+
+            TestItem.StaffId = PrimaryKey;
+
+            // updating the properties
+
+            TestItem.StaffId = 5;
+            TestItem.Name = "yash";
+            TestItem.Email = "yash@gmail.com";
+            TestItem.ContactNumber = "333333";
+            TestItem.Salary = "600";
+            TestItem.EmploymentDate = DateTime.Now;
+            TestItem.IsActive = true;
+
+            AllStaff.ThisStaff = TestItem;
+
+            AllStaff.Update();
+
+            AllStaff.ThisStaff.Find(PrimaryKey);
+
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+        }
     }
 }

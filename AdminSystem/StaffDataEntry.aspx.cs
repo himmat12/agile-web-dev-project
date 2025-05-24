@@ -9,12 +9,39 @@ using ClassLibrary;
 public partial class _1_DataEntry : System.Web.UI.Page
 {
     public int StaffId { get; private set; }
+    public object StaffList { get; private set; }
 
+    Int32 StaffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+
+        if (IsPostBack == false)
+        {
+            if (StaffId != -1)
+            {
+                DisplayStaff();
+            }
+        }
 
     }
+    void DisplayStaff()
+    {
+        // Fix: Cast StaffList to the correct type (clsStaffCollection)  
+        clsStaffCollection clsStaff = new clsStaffCollection();
 
+        // Fix: Ensure StaffList is properly initialized and cast  
+        StaffList = new clsStaffCollection();
+        ((clsStaffCollection)StaffList).ThisStaff.Find(StaffId);
+
+        txtStaffID.Text = ((clsStaffCollection)StaffList).ThisStaff.StaffId.ToString();
+        txtName.Text = ((clsStaffCollection)StaffList).ThisStaff.Name;
+        txtEmail.Text = ((clsStaffCollection)StaffList).ThisStaff.Email;
+        txtContactNumber.Text = ((clsStaffCollection)StaffList).ThisStaff.ContactNumber;
+        txtSalary.Text = ((clsStaffCollection)StaffList).ThisStaff.Salary;
+        txtEmploymentDate.Text = ((clsStaffCollection)StaffList).ThisStaff.EmploymentDate.ToString();
+        chkIsActive.Checked = ((clsStaffCollection)StaffList).ThisStaff.IsActive;
+    }
 
 
     protected void BtnOk_Click(object sender, EventArgs e)
@@ -54,7 +81,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             StaffList.ThisStaff = Staff;
             StaffList.Add();
 
-
+            if (StaffId == -1)
+            {
+                //add the new record
+                StaffList.Add();
+            }
+            else
+            {
+                //update the existing record
+                StaffList.Update();
+            }
             Session["Staff"] = Staff;
             //navigate to the view page
             Response.Redirect("StaffList.aspx");

@@ -102,7 +102,8 @@ namespace ClassLibrary
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
-
+            //add the parameters for the stored procedure
+           
             DB.AddParameter("@Name", mThisStaff.Name);
             DB.AddParameter("@Email", mThisStaff.Email);
             DB.AddParameter("@ContactNumber", mThisStaff.ContactNumber);
@@ -115,7 +116,17 @@ namespace ClassLibrary
 
         public void Update()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameters for the stored procedure
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@Email", mThisStaff.Email);
+            DB.AddParameter("@ContactNumber", mThisStaff.ContactNumber);
+            DB.AddParameter("@Salary", mThisStaff.Salary);
+            DB.AddParameter("@IsActive", mThisStaff.IsActive);
+            DB.AddParameter("@EmploymentDate", mThisStaff.EmploymentDate);
+
+            DB.Execute("sproc_tblStaff_Update");
         }
     }
 }

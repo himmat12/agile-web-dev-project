@@ -167,7 +167,7 @@ namespace Testing5
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the date added property
-            if (Staff.EmploymentDate != Convert.ToDateTime("2/05/2025"))
+            if (Staff.EmploymentDate != Convert.ToDateTime("24/05/2025"))
             {
                 OK = false;
             }

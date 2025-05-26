@@ -181,5 +181,34 @@ namespace Testing5
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+
+            clsStaff TestItem = new clsStaff();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Name = "Yayy";
+            TestItem.Email = "yuppp@gmail.com";
+            TestItem.ContactNumber = "1234567";
+            TestItem.Salary = "1000";
+            TestItem.EmploymentDate = DateTime.Now;
+            TestItem.IsActive = true;
+            AllStaff.ThisStaff = TestItem;
+
+            PrimaryKey = AllStaff.Add();
+
+            TestItem.Id = PrimaryKey;
+
+            AllStaff.ThisStaff.Find(PrimaryKey);
+
+            AllStaff.Delete(PrimaryKey);
+
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+        }
     }
 }

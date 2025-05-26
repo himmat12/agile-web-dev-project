@@ -103,7 +103,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             //add the parameters for the stored procedure
-           
+
             DB.AddParameter("@Name", mThisStaff.Name);
             DB.AddParameter("@Email", mThisStaff.Email);
             DB.AddParameter("@ContactNumber", mThisStaff.ContactNumber);
@@ -127,6 +127,15 @@ namespace ClassLibrary
             DB.AddParameter("@EmploymentDate", mThisStaff.EmploymentDate);
 
             DB.Execute("sproc_tblStaff_Update");
+        }
+
+        public void Delete(int primaryKey)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@StaffID", mThisStaff.Id);
+
+            DB.Execute("sproc_tblStaff_Delete");
         }
     }
 }

@@ -48,4 +48,22 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 StaffID;
+
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
+
+            Session["StaffID"] = StaffID;
+
+            Response.Redirect("StaffConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
 }

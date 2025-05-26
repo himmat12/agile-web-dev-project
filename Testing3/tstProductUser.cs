@@ -91,5 +91,35 @@ namespace Testing3
              
         }
 
+        // user name and password can be found//
+        [TestMethod]
+        public void TestUserNamePWFound()
+        {
+            // Create an instance of the class we want to test
+            clsProductUser productUser = new clsProductUser();
+            //create a Boolean variable to store the result
+            Boolean Found = false;
+            //create a boolean to record if data is okay 
+            Boolean OK = true;
+            //create some test data to use with the FindUser method
+            string UserName = "Sandra";
+            string Password = "sandra321";
+            //invoke the FindUser method
+            Found = productUser.FindUser(UserName, Password);
+            //check the user id property
+            if(productUser.UserName != UserName && productUser.Password != Password)
+            {
+                //if the user name and password are not found, set Found to false
+                Found = false;
+            }
+            else
+            {
+                //if the user name and password are found, set Found to true
+                Found = true;
+            }
+            //test that the result is true
+            Assert.IsTrue(Found);
+        }
+
     }
 }

@@ -167,7 +167,7 @@ namespace Testing5
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the date added property
-            if (Staff.EmploymentDate != Convert.ToDateTime("24/05/2025"))
+            if (Staff.EmploymentDate != Convert.ToDateTime("27/05/2025"))
             {
                 OK = false;
             }
@@ -858,7 +858,7 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
                     //this should pass
-                    string PostCode = "aaaaaaaaa";
+                    string Salary = "aaaaaaaaa";
                     //invoke the method
                     Error = Staff.Valid(EmploymentDate, Email, Name, ContactNumber, Salary);
                     //test to see that the result is correct
@@ -873,7 +873,7 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
                     //this should fail
-                    string PostCode = "aaaaaaaaaa";
+                    string Salary = "aaaaaaaaaa";
                     //invoke the method
                     Error = Staff.Valid(EmploymentDate, Email, Name, ContactNumber, Salary);
                     //test to see that the result is correct
@@ -888,7 +888,7 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
                     //this should pass
-                    string PostCode = "aaaa";
+                    string Salary = "aaaa";
                     //invoke the method
                     Error = Staff.Valid(EmploymentDate, Email, Name, ContactNumber, Salary);
                     //test to see that the result is correct

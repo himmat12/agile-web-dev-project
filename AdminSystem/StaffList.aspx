@@ -21,6 +21,15 @@
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
         </p>
         <p>
+            Enter a ContactNumber&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtContactNumber" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="Clear Filter" />
+        </p>
+        <p>
             <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
         </p>
     </form>

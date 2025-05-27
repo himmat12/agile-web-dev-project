@@ -200,7 +200,7 @@ namespace Testing5
 
             PrimaryKey = AllStaff.Add();
 
-            TestItem.Id = PrimaryKey;
+            TestItem.StaffId = PrimaryKey;
 
             AllStaff.ThisStaff.Find(PrimaryKey);
 
@@ -209,6 +209,56 @@ namespace Testing5
             Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
 
             Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByContactNumberMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+
+            FilteredStaff.ReportByContactNumber("");
+
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+
+        }
+        [TestMethod]
+        public void ReportByContactNumberNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //try to filter based on a value that doesn't exist
+            FilteredStaff.ReportByContactNumber("xxxx");
+            //test to see if there are no records
+            Assert.AreEqual(0, FilteredStaff.Count);
+        }
+        [TestMethod]
+        public void ReportByDataContactNumberTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a status that doesn't exist
+            FilteredStaff.ReportByContactNumber("000000"); //2 records
+            //check that the correct number of records are found
+            if (FilteredStaff.Count == 2)
+            {
+                if (FilteredStaff.StaffList[0].StaffId != 8)
+                {
+                    OK = false;
+                }
+                if (FilteredStaff.StaffList[1].StaffId != 9)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are records
+            Assert.IsTrue(OK);
         }
     }
 }

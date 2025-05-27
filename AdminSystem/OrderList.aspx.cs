@@ -16,8 +16,11 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayOrders();
 
-            List<string> items = new List<string>{"--please select--","pending", "shipped", "cancelled", "completed" };
-            
+            //update dynamically based on distinct values for orderStatus  - sproc_tblOrders_SelectDistinctOrderStatus
+            //use a foreach to add new items keep please select in initialisation
+            List<string> items = new List<string> { "--please select--", "pending", "shipped", "cancelled", "completed" };
+
+
             foreach (string item in items)
             {
                 ddlOrderStatus.Items.Add(new ListItem(item));
@@ -30,13 +33,25 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the orders collection
         clsOrdersCollection Orders = new clsOrdersCollection();
         //set the data source to the list of orders in the collection
+        List<string> formattedOrders = new List<string>();
+        foreach (clsOrders order in Orders.OrdersList)
+        {
+            string displayText = "Order: " + order.OrderID + " - " + order.OrderDate.ToShortDateString();
+            formattedOrders.Add(displayText);
+        }
+        //set the data source to the list of orders in the collection
         lstOrdersList.DataSource = Orders.OrdersList;
         //set the name of the primary key
         lstOrdersList.DataValueField = "OrderID";
         //set the data field to display: any field - placementDate
-        lstOrdersList.DataTextField = "OrderDate";
+        lstOrdersList.DataTextField = "";
         //bind the data to the list
         lstOrdersList.DataBind();
+
+        for (int i = 0; i < formattedOrders.Count; i++)
+        {
+            lstOrdersList.Items[i].Text = formattedOrders[i].ToString();
+        }
     }
 
 
@@ -108,15 +123,27 @@ public partial class _1_List : System.Web.UI.Page
         else
         {
             lblError.Text = "";
+
+            List<string> formattedOrders = new List<string>();
+            foreach (clsOrders order in AnOrder.OrdersList)
+            {
+                string displayText = "Order: " + order.OrderID + " - " + order.OrderDate.ToShortDateString();
+                formattedOrders.Add(displayText);
+            }
             //set the data source to the list of the orders in the collection
             lstOrdersList.DataSource = AnOrder.OrdersList;
             //set the name of the primary key
             lstOrdersList.DataValueField = "orderID";
             //set the name of the field to display
             //i want to show date and ID
-            lstOrdersList.DataTextField = "orderDate";
+            lstOrdersList.DataTextField = "";
             //bind the data to the list
             lstOrdersList.DataBind();
+
+            for (int i = 0; i < formattedOrders.Count; i++)
+            {
+                lstOrdersList.Items[i].Text = formattedOrders[i].ToString();
+            }
         }
             
     }
@@ -129,14 +156,26 @@ public partial class _1_List : System.Web.UI.Page
         AnOrder.ReportByStatus("");
         //clear any existing filters to tidy up the interface
         ddlOrderStatus.SelectedIndex = 0;
+
+        List<string> formattedOrders = new List<string>();
+        foreach (clsOrders order in AnOrder.OrdersList)
+        {
+            string displayText = "Order: " + order.OrderID + " - " + order.OrderDate.ToShortDateString();
+            formattedOrders.Add(displayText);
+        }
+
         //set the data source to the list of the orders in the collection
         lstOrdersList.DataSource = AnOrder.OrdersList;
         //set the name of the primary key
         lstOrdersList.DataValueField = "orderID";
         //set the name of the field to display
         //i want to show date and ID
-        lstOrdersList.DataTextField = "orderDate";
+        lstOrdersList.DataTextField = "";
         //bind the data to the list
         lstOrdersList.DataBind();
+        for (int i = 0; i < formattedOrders.Count; i++)
+        {
+            lstOrdersList.Items[i].Text = formattedOrders[i].ToString();
+        }
     }
 }

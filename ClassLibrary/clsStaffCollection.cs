@@ -133,7 +133,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("@StaffID", mThisStaff.Id);
+            DB.AddParameter("@StaffID", mThisStaff.StaffId);
 
             DB.Execute("sproc_tblStaff_Delete");
         }

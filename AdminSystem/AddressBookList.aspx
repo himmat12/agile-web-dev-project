@@ -8,7 +8,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="text-align: center">
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="X-Large" Text="Address Book List"></asp:Label>
         </div>
     </form>
 </body>

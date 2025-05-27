@@ -46,3 +46,9 @@ H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\De
 H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.dll
 H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\ClassLibrary\obj\Debug\ClassLibrary.pdb
+H:\CTEC2713\Assignment_Agile_Dev\repo\ClassLibrary\bin\Debug\ClassLibrary.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\ClassLibrary\bin\Debug\ClassLibrary.pdb
+H:\CTEC2713\Assignment_Agile_Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+H:\CTEC2713\Assignment_Agile_Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+H:\CTEC2713\Assignment_Agile_Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\ClassLibrary\obj\Debug\ClassLibrary.pdb

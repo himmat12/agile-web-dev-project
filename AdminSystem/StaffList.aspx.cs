@@ -22,12 +22,12 @@ public partial class _1_List : System.Web.UI.Page
 
     void DisplayStaff()
     {
-        clsStaffCollection Staffs = new clsStaffCollection();
+      //  clsStaffCollection Staffs = new clsStaffCollection();
 
-        lstStaffList.DataSource = Staffs.StaffList;
-        lstStaffList.DataValueField = "StaffID";
-        lstStaffList.DataTextField = "Name";
-        lstStaffList.DataBind();
+      //  lstStaffList.DataSource = Staffs.StaffList;
+      //  lstStaffList.DataValueField = "StaffID";
+      //  lstStaffList.DataTextField = "Name";
+      //  lstStaffList.DataBind();
 
     }
 }

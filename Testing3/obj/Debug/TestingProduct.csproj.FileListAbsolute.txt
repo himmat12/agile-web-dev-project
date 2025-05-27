@@ -46,3 +46,19 @@ H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing3\obj\Debug\
 H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing3\obj\Debug\TestingP.9F641A78.Up2Date
 H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing3\obj\Debug\Testing3.dll
 H:\Desktop\2024-2025\Agile Development\agile-web-dev-project\Testing3\obj\Debug\Testing3.pdb
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Testing3.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Testing3.pdb
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\ClassLibrary.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\ClassLibrary.pdb
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\obj\Debug\TestingProduct.csproj.AssemblyReference.cache
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\obj\Debug\TestingProduct.csproj.CoreCompileInputs.cache
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\obj\Debug\TestingP.9F641A78.Up2Date
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\obj\Debug\Testing3.dll
+H:\CTEC2713\Assignment_Agile_Dev\repo\Testing3\obj\Debug\Testing3.pdb

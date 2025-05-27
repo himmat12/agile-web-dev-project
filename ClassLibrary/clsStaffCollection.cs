@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace ClassLibrary
 {
@@ -99,6 +100,9 @@ namespace ClassLibrary
                 mThisStaff = value;
             }
         }
+
+        public object ContactNumber { get; private set; }
+
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
@@ -133,9 +137,48 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("@StaffID", mThisStaff.Id);
+            DB.AddParameter("@StaffID", mThisStaff.StaffId);
 
             DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByContactNumber(string ContactNumber)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@ContactNumber", ContactNumber);
+
+            DB.Execute("sproc_tblStaff_FilterByContactNumber");
+
+            PopulateArray(DB);
+        }
+        public void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+
+            Int32 RecordCount;
+
+            RecordCount = DB.Count;
+
+            StaffList = new List<clsStaff>();
+
+            while (Index < RecordCount)
+            {
+                clsStaff Staff = new clsStaff();
+
+
+                Staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                Staff.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                Staff.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                Staff.ContactNumber = Convert.ToString(DB.DataTable.Rows[Index]["ContactNumber"]);
+                Staff.Salary = Convert.ToString(DB.DataTable.Rows[Index]["Salary"]);
+                Staff.EmploymentDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["EmploymentDate"]);
+                Staff.IsActive = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsActive"]);
+
+                StaffList.Add(Staff);
+
+                Index++;
+            }
         }
     }
 }

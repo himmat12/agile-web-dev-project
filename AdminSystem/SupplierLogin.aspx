@@ -10,7 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <br />
-            Address Book Login Page<br />
+            <asp:Label ID="Label1" runat="server" Text="Supplier Management Login Page" Font-Bold="True" Font-Size="Large"></asp:Label>
+            <br />
             <br />
             <br />
             Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

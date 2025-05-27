@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
+    <!--TODO: rearrange buttons -->
 <body style="height: 496px">
     <form id="form1" runat="server">
         <div>

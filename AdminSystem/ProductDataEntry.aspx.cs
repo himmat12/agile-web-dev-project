@@ -50,8 +50,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsProduct
         clsProduct AnProduct = new clsProduct();
+        //set a defoult ProductID for new records
+        int ProductID = -1;
+        //if the product id is not -1 then it is an existing record
+        if (Session["ProductID"] != null && Session["ProductID"].ToString() != "-1")
+        {
+            try
+            {
+                ProductID = Convert.ToInt32(txtProductID.Text);
+            }
+            catch
+            {
+                lblError.Text = "Invalid Product ID.";
+                return;
+            }
+        }
         //capture the product id
-        int ProductID = Convert.ToInt32(txtProductID.Text);
+        //int ProductID = Convert.txtProductID.Text;
         //capture the product name
         string Name = txtName.Text;
         //capture the product category
@@ -122,29 +137,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create an instance of the product class
         clsProduct AnProduct = new clsProduct();
-        //create a vartiable to store the PK
-        Int32 ProductID;
-        //reate a variable to store the found status
-        Boolean Found = false;
-        //get the PK entered by the user
-        ProductID = Convert.ToInt32(txtProductID.Text);
-        //find the record
-        Found = AnProduct.Find(ProductID);
-        //if found
-        if (Found == true)
+
+        //validate input
+        if (!string.IsNullOrEmpty(txtProductID.Text))
         {
-            //dispaly the values of the properties
-            txtName.Text = AnProduct.Name;
-            txtPrice.Text = AnProduct.Price.ToString();
-            chkInStock.Checked = AnProduct.InStock;
-            txtCategory.Text = AnProduct.Category;
-            txtSize.Text = AnProduct.Size;
-            txtReleasedDate.Text = AnProduct.ReleasedDate.ToString();
+            try
+            {
+                //create a variable to store the PK
+                Int32 ProductID = Convert.ToInt32(txtProductID.Text);
+
+                //create a variable to store the found status
+                Boolean Found = AnProduct.Find(ProductID);
+
+                //if found
+                if (Found == true)
+                {
+                    //display the values of the properties
+                    txtName.Text = AnProduct.Name;
+                    txtPrice.Text = AnProduct.Price.ToString();
+                    chkInStock.Checked = AnProduct.InStock;
+                    txtCategory.Text = AnProduct.Category;
+                    txtSize.Text = AnProduct.Size;
+                    txtReleasedDate.Text = AnProduct.ReleasedDate.ToString();
+                    lblError.Text = ""; // clear error
+                }
+                else
+                {
+                    lblError.Text = "Product not found.";
+                }
+            }
+            catch (FormatException)
+            {
+                lblError.Text = "Product ID must be a number.";
+            }
         }
         else
         {
-            lblError.Text = "Product not found.";
+            lblError.Text = "Please enter a Product ID.";
         }
     }
 }
-

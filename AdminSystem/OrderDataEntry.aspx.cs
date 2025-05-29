@@ -20,6 +20,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 //display the current data for the record
                 DisplayOrder();
+                //OrderID can be accessed
+                txtOrderID.ReadOnly = false;
+            }
+            //if it is a new record
+            if (OrderID == -1)
+            {
+                //orderID cannot be accessed - changed
+                txtOrderID.ReadOnly = true;
             }
         }
     }
@@ -40,7 +48,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         chkIsPaid.Checked = Orders.ThisOrder.OrderPaid;
     }
 
-    protected void btnOk_Click(object sender, EventArgs e)
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsOrder
         clsOrders AnOrder = new clsOrders();
@@ -140,6 +148,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("OrderList.aspx");
     }
+
 }

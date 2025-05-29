@@ -34,7 +34,7 @@
         <br />
         <asp:CheckBox ID="checkActive" runat="server" style="z-index: 2; left: 140px; top: 275px; position: absolute;" Text="Active" height="22px" width="128px" />
         <br />
-        <asp:Label ID="lblError" runat="server" style="z-index: 2; left: 20px; top: 300px; position: absolute; right: 536px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 2; left: 20px; top: 300px; position: absolute; right: 536px; height: 19px;" ForeColor="Red"></asp:Label>
        <br />
         <asp:Button ID="btnCancle" runat="server" style="z-index: 2; left: 12px; top: 337px; position: absolute; width: 129px" Text="Cancle" OnClick="btnCancle_Click" />
        <asp:Button ID="btnSubmit" runat="server" style="z-index: 2; left: 149px; top: 337px; position: absolute; width: 129px; margin-bottom: 3px" Text="Submit" OnClick="btnSubmit_Click" />

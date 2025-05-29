@@ -30,10 +30,13 @@
 
         <asp:Label ID="lblCustomerID" runat="server" style="z-index: 1; left: 10px; top: 185px; position: absolute" Text="Customer ID: " height="19px" width="121px"></asp:Label>
         <asp:TextBox ID="txtStaffID" runat="server" style="z-index: 1; left: 147px; top: 214px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 21px; top: 322px; position: absolute" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="height: 26px; position: relative; top: 289px; left: 104px" Text="Cancel" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 25px; top: 282px; position: absolute; right: 503px; bottom: 341px;"></asp:Label>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 317px; top: 43px; position: absolute" Text="Find" />
+        <p>
+        <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" style="z-index: 1; left: 23px; top: 323px; position: absolute; width: 60px; right: 1244px" height="26px" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" style="z-index: 1; left: 123px; top: 323px; position: absolute"  />
+        
+        </p>
     </form>
 </body>
 </html>

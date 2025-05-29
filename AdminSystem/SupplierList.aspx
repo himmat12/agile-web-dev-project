@@ -26,7 +26,7 @@
             <asp:Button ID="btnDelete" runat="server" Text="Delete" Width="100px" OnClick="btnDelete_Click" Height="30px" />
         </p>
         <p>
-            <asp:Label ID="Label1" runat="server" Text="Enter an Address:" Height="30px"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Filter an Address:" Height="30px"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtAddress" runat="server" Width="220px" Height="30px" Font-Size="Small" style="text-align: left"></asp:TextBox>
         </p>

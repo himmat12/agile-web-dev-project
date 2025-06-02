@@ -124,7 +124,7 @@ namespace ClassLibrary
             }
         }
         /****** VALID METHOD ******/
-        public string Valid(string orderStatus, string orderDate, string orderTotalPrice)  //could add foreign keys?
+        public string Valid(string orderStatus, string orderDate, string orderTotalPrice)  //could add foreign keys
         { 
             String Error = "";
             //make temp variable for date
@@ -135,7 +135,6 @@ namespace ClassLibrary
                 DateTemp = Convert.ToDateTime(orderDate);
 
                 /** ORDERSTATUS **/
-               // var statuses = new List<string>() { "pending", "shipped", "cancelled", "completed" }; //add a check to see if the status is what the database allows
                 if (orderStatus.Length == 0)
                 {
                     Error += "Order Status cannot be blank : ";
@@ -143,6 +142,10 @@ namespace ClassLibrary
                 if (orderStatus.Length > 20)
                 {
                     Error += "Order Status must have less than 20 characters: ";
+                }
+                if (orderStatus == "--please select--")
+                {
+                    Error += "Select an order status : ";
                 }
 
                 /** DATE **/
@@ -167,7 +170,7 @@ namespace ClassLibrary
                 if (orderTotalPrice.Length == 0)
                 {
                     Error += "Order total price cannot be blank : ";
-                } //check for over max length too 18 with 2 decimals 20 total
+                } 
                 if (orderTotalPrice.Length > 7)
                 {
                     Error += "The total price cannot be over 7 digits : ";
@@ -180,7 +183,7 @@ namespace ClassLibrary
             catch
             {
                 //record error
-                Error += "The total price was not in the right format - a float of 7 digits : ";
+                Error += "The total price was not in the right format - a decimal of 7 digits : ";
             }
             //always return at end
             return Error;

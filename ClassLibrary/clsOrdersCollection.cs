@@ -8,6 +8,7 @@ namespace ClassLibrary
         //Members
         List<clsOrders> mOrdersList = new List<clsOrders>();
         clsOrders mThisOrder = new clsOrders();
+        List<string> mPopulateList = new List<string>();
 
         /****************** gets and sets ******************/
 
@@ -49,6 +50,18 @@ namespace ClassLibrary
             {
                 //set the private data
                 mThisOrder = value;
+            }
+        }
+        public List<string> PopulateList
+        {
+            get
+            {
+                //return the private data
+                return mPopulateList;
+            }
+            set
+            {
+                mPopulateList = value;
             }
         }
 
@@ -123,6 +136,34 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
+        public void PopulateStatusDDL() //works will need another one for staff and customer id
+        {
+            //populates the drop down using unique order statuses from the database
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //execute stored procedure - get unique order statuses
+            DB.Execute("sproc_tblOrders_SelectDistinctOrderStatus");
+            //varible for index
+            Int32 Index = 0;
+            //count of records
+            Int32 RecordCount = DB.Count;
+            //clear private string list
+            mPopulateList = new List<string>();
+            //while there are records
+            while (Index < RecordCount)
+            {
+                //blank string
+                string status = "";
+                //populate string
+                status = Convert.ToString(DB.DataTable.Rows[Index]["orderStatus"]);
+                //add string to string list
+                mPopulateList.Add(status);
+                //next record
+                Index++;
+            }
+        }
+
+
         void PopulateArray(clsDataConnection DB)
         {
             //populates the array list based on the data table in the parameter DB
@@ -153,11 +194,5 @@ namespace ClassLibrary
                 Index++;
             }
         }
-
-
-
-
-
-        //get unqiue order statuses
     }
 }

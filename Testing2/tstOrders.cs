@@ -209,7 +209,7 @@ namespace Testing2
             //invoke method- uses a blank string
             Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "Order Status cannot be blank : ");
         }
         [TestMethod]
         public void OrderStatusMin()
@@ -253,7 +253,7 @@ namespace Testing2
             Status = Status.PadLeft(21, 'a');
             Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "Order Status must have less than 20 characters: ");
         }
         [TestMethod]
         public void OrderStatusMid()
@@ -271,7 +271,7 @@ namespace Testing2
             Status = Status.PadLeft(500, 'a');
             Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "Order Status must have less than 20 characters: ");
         }
 
         /** DATE **/
@@ -287,7 +287,7 @@ namespace Testing2
             //invoke the method
             Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
             //test to see that the result is correct - date cannot be less than 5 years ago
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The order date is too far in the past : ");
         }
         [TestMethod]
         public void OrderDateMinMinusOne()
@@ -321,7 +321,7 @@ namespace Testing2
             //invoke the method
             Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The order date cannot be in the future : ");
         }
         [TestMethod]
         public void OrderDateExtremeMax()
@@ -333,7 +333,7 @@ namespace Testing2
             //invoke the method
             Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The order date cannot be in the future : ");
         }
         [TestMethod]
         public void DateAddedInvalidData()
@@ -343,23 +343,22 @@ namespace Testing2
             //invoke method
             Error = AnOrder.Valid(OrderStatus,OrderDate, OrderTotalPriceString);
             //test to see if result is correct
-            Assert.AreNotEqual(Error,"");
+            Assert.AreEqual(Error, "The date was not a valid date : ");
         }
 
         //** TOTAL PRICE **//
         private float TestTotalPrice = 0.00F;
-
         [TestMethod]
         public void OrderTotalPriceExtremeMin()
         {
             //change total price
-            TestTotalPrice -= 1000000.00F;
+            TestTotalPrice -= 1000000.00F; //over 6 digits and under 0
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
             Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The total price cannot be over 7 digits : The total price cannot be lower than 0 : ");
         }
         [TestMethod]
         public void OrderTotalPriceMinMinusOne()
@@ -371,7 +370,7 @@ namespace Testing2
             //invoke method
             Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The total price cannot be lower than 0 : ");
         }
         [TestMethod]
         public void OrderTotalPriceMin()
@@ -411,7 +410,7 @@ namespace Testing2
         public void OrderTotalPriceMax()
         {
             //change total price
-            TestTotalPrice += 9999999.49F;
+            TestTotalPrice += 9999.49F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
@@ -423,13 +422,13 @@ namespace Testing2
         public void OrderTotalPriceMaxPlusOne()
         {
             //change total price
-            TestTotalPrice += 100000000;
+            TestTotalPrice += 10000.49F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
             Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The total price cannot be over 7 digits : ");
         }
         [TestMethod]
         public void OrderTotalPriceMid()
@@ -453,7 +452,7 @@ namespace Testing2
             //invoke method
             Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
             //test to see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The total price was not in the right format - a decimal of 7 digits : ");
         }
     }
 }

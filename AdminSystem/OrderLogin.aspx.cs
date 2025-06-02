@@ -8,11 +8,9 @@ using ClassLibrary;
 
 public partial class _Default : System.Web.UI.Page
 {
-    //TODO: add authenication, add cancel to go to main menu when implemented
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -29,6 +27,7 @@ public partial class _Default : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = AnUser.FindUser(UserName, Password);
+        
         //if username or password empty
         if (txtUserName.Text == "")
         {
@@ -38,15 +37,37 @@ public partial class _Default : System.Web.UI.Page
         {
             lblError.Text += "Enter a password ";
         }
+        
         //if found
         if (Found == true)
         {
-            //redirects to list page
-            Response.Redirect("OrderList.aspx");
+            //add the details to session
+            //add session to record user information
+            Session["AnUser"] = AnUser;
+
+            //check department
+            //wrong department
+            if (AnUser.Department != "Orders")
+            {
+                lblError.Text = "This user belongs to the wrong department - Please return to the main menu.";
+                
+            }
+            //right department
+            else 
+            {
+                //redirects to list page
+                Response.Redirect("OrderList.aspx");
+            }
+                
         }
         else if (Found == false)
         {
             lblError.Text += "Login details are incorrect. Please try again ";
         }
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

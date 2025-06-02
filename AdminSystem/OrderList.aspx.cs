@@ -10,21 +10,57 @@ public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //create new instance of user
+        clsOrderUser AnUser = new clsOrderUser();
+        //get data from the session
+        AnUser = (clsOrderUser)Session["AnUser"];
+
+        //if user is not part of orders department
+        if (AnUser.Department != "Orders")
+        {
+            Response.Redirect("TeamMainMenu.aspx");
+        }
+
         //if this is the first time the page is displayed
         if (IsPostBack == false)
         {
             //update the list box
             DisplayOrders();
 
-            //update dynamically based on distinct values for orderStatus  - sproc_tblOrders_SelectDistinctOrderStatus
-            //use a foreach to add new items keep please select in initialisation
-            List<string> items = new List<string> { "--please select--", "pending", "shipped", "cancelled", "completed" };
+            //populate status order drop down box dynamically
+            //default value for the drop down box - index 0
+            List<string> items = new List<string> { "--please select--"};
+            //populate the list further
+            //create class instance
+            clsOrdersCollection orders = new clsOrdersCollection();
+            //call populate status function
+            orders.PopulateStatusDDL();
 
+            for (int i = 0; i < orders.PopulateList.Count; i++)
+            {
+                items.Add(orders.PopulateList[i].ToString());
+            }
 
+            //adds items to drop down box
             foreach (string item in items)
             {
                 ddlOrderStatus.Items.Add(new ListItem(item));
             }
+        }
+
+     /*   //create new instance of user
+        clsOrderUser AnUser = new clsOrderUser();
+        //get data from the session
+        AnUser = (clsOrderUser)Session["AnUser"]; */
+        //if user is signed in
+        if (AnUser != null)
+        {
+            Response.Write("Order Management System - Logged in as: " + AnUser.UserName);
+        }
+        //no user signed in
+        else
+        {
+            Response.Redirect("TeamMainMenu.aspx");
         }
     }
 
@@ -156,6 +192,8 @@ public partial class _1_List : System.Web.UI.Page
         AnOrder.ReportByStatus("");
         //clear any existing filters to tidy up the interface
         ddlOrderStatus.SelectedIndex = 0;
+        //clear error message
+        lblError.Text = "";
 
         List<string> formattedOrders = new List<string>();
         foreach (clsOrders order in AnOrder.OrdersList)
@@ -177,5 +215,16 @@ public partial class _1_List : System.Web.UI.Page
         {
             lstOrdersList.Items[i].Text = formattedOrders[i].ToString();
         }
+    }
+
+    protected void btnLogOut_click(object sender, EventArgs e)
+    {
+        //TODO: clear user info from session
+        //new instance of user
+        clsOrderUser AnUser = new clsOrderUser();  
+        //update session information with blank details
+        Session["AnUser"] = AnUser;
+        //redirect
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

@@ -11,12 +11,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //create new instance of user
+        clsOrderUser AnUser = new clsOrderUser();
+        //get data from the session
+        AnUser = (clsOrderUser)Session["AnUser"];
+
+        //if user is not part of orders department
+        if (AnUser.Department != "Orders")
+        {
+            //redirect to 
+            Response.Redirect("TeamMainMenu.aspx");
+        }
+
         //get the number of the order to be processed
         OrderID = Convert.ToInt32(Session["orderID"]);
         if (IsPostBack == false)
         {
+            //default value for the drop down box
+            List<string> items = new List<string> { "--please select--" };
+            //populate the list further
+            //create class instance
+            clsOrdersCollection orders = new clsOrdersCollection();
+            //call populate status function
+            orders.PopulateStatusDDL();
+
+            for (int i = 0; i < orders.PopulateList.Count; i++)
+            {
+                items.Add(orders.PopulateList[i].ToString());
+            }
+
+            //adds items to drop down box
+            foreach (string item in items)
+            {
+                ddlOrderStatus.Items.Add(new ListItem(item));
+            }
             //if this is not a new record
-            if(OrderID != -1)
+            if (OrderID != -1)
             {
                 //display the current data for the record
                 DisplayOrder();
@@ -41,7 +71,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //display the data for the record
         txtOrderID.Text = Orders.ThisOrder.OrderID.ToString();
         txtPlacementDate.Text = Orders.ThisOrder.OrderDate.ToString();
-        txtOrderStatus.Text = Orders.ThisOrder.OrderStatus.ToString();
+
+
+        ddlOrderStatus.Text = Orders.ThisOrder.OrderStatus.ToString();
         txtTotalPrice.Text = Orders.ThisOrder.OrderTotalPrice.ToString();
         txtCustomerID.Text = Orders.ThisOrder.CustomerID.ToString();
         txtStaffID.Text = Orders.ThisOrder.StaffID.ToString();
@@ -55,7 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the placement date
         string OrderDate = txtPlacementDate.Text;
         //capture the order status
-        string OrderStatus = txtOrderStatus.Text;
+        string OrderStatus = ddlOrderStatus.Text;
         //capture order total price
         string OrderTotalPrice = txtTotalPrice.Text;
         //capture customer id
@@ -134,7 +166,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //display the values of the properties in the form
             txtPlacementDate.Text = AnOrder.OrderDate.ToString();
-            txtOrderStatus.Text = AnOrder.OrderStatus;
+            ddlOrderStatus.Text = AnOrder.OrderStatus.ToString();
             txtTotalPrice.Text = AnOrder.OrderTotalPrice.ToString();
             txtCustomerID.Text = AnOrder.CustomerID.ToString();
             txtStaffID.Text = AnOrder.StaffID.ToString();
@@ -151,4 +183,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("OrderList.aspx");
     }
 
+
+    protected void btnLogOut_click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

@@ -38,8 +38,6 @@
             <br />
             <br />
             <br />
-            <asp:Button ID="btnAddress" runat="server" CssClass="auto-style2" height="200px" Text="Address Management" width="250px" Font-Size="Medium" OnClick="btnAddress_Click" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnProduct" runat="server" CssClass="auto-style2" height="200px" Text="Product Management" width="250px" Font-Size="Medium" OnClick="btnProduct_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnStaff" runat="server" CssClass="auto-style2" Height="200px" Text="Staff Management" Width="250px" Font-Size="Medium" OnClick="btnStaff_Click" />

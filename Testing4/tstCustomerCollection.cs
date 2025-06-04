@@ -82,11 +82,11 @@ namespace Testing4
             //set its properties
             TestItem.IsSubscribed = true;
             TestItem.CustomerId = 1;
-            TestItem.Name = "Sam";
-            TestItem.Email = "Sam@gmail.com";
-            TestItem.PhoneNumber = "1234567890";
+            TestItem.Name = "sam";
+            TestItem.Email = "sam@gmail.com";
+            TestItem.PhoneNumber = "123456789";
             TestItem.CreatedAt = DateTime.Now;
-            TestItem.Address = "Le4 4ft";
+            TestItem.Address = "le4 4ft";
             //add the item to the test list
             TestList.Add(TestItem);
             //assign the data to the property
@@ -106,11 +106,11 @@ namespace Testing4
             //variable to store the primary key
             Int32 PrimaryKey = 0;
 
-            TestItem.CustomerId = 5;
-            TestItem.Name = "jasmine";
-            TestItem.Email = "jasmine@gmail.com";
-            TestItem.PhoneNumber = "012345678";
-            TestItem.Address = "le3 3lj";
+            TestItem.CustomerId = 1;
+            TestItem.Name = "sam";
+            TestItem.Email = "sam@gmail.com";
+            TestItem.PhoneNumber = "123456789";
+            TestItem.Address = "le4 4ft";
             TestItem.CreatedAt = DateTime.Now;
             TestItem.IsSubscribed = true;
             //set ThisAddress to the test data
@@ -125,6 +125,46 @@ namespace Testing4
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
         }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerId = 1;
+            TestItem.Name = "sam";
+            TestItem.Email = "sam@gmail.com";
+            TestItem.PhoneNumber = "123456789";
+            TestItem.Address = "le4 4ft";
+            TestItem.CreatedAt = DateTime.Now;
+            TestItem.IsSubscribed = true;
+            //set ThisAddress to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerId = PrimaryKey;
+            //modify the test record
+            TestItem.CustomerId = 5;
+            TestItem.Name = "jasmine";
+            TestItem.Email = "jasmine@gmail.com";
+            TestItem.PhoneNumber = "012345678";
+            TestItem.Address = "le3 3lj";
+            TestItem.CreatedAt = DateTime.Now;
+            TestItem.IsSubscribed = false;
+            //set the record based on the new test data
+            AllCustomers.ThisCustomer = TestItem;
+            //update the record
+            AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
+
     }
 }
 

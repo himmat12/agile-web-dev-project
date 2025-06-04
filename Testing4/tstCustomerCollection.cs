@@ -95,43 +95,6 @@ namespace Testing4
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
 
         }
-        [TestMethod]
-        public void TwoRecordPresent()
-        {
-            //create an instance of the class we want to create
-            clsCustomerCollection AllCustomers = new clsCustomerCollection();
-            //test to see that the two values are the same
-            Assert.AreEqual(AllCustomers.Count, 2);
-        }
-
-    //constructor for the class
-        // public clsCustomerCollection()
-        //{
-        //    //create the items of test data
-        //    clsCustomer TestItem = new clsCustomer();
-        //    //set its properties
-        //    TestItem.IsSubscribed = true;
-        //    TestItem.CustomerId = 1;
-        //    TestItem.Name = "Sam";
-        //    TestItem.Email = "Sam@gmail.com";
-        //    TestItem.PhoneNumber = "1234567890";
-        //    TestItem.CreatedAt = DateTime.Now;
-        //    TestItem.Address = "Le4 4ft";
-        //    //add the test item to the test list
-        //    mCustomerList.Add(TestItem);
-        //    //re initialse the object for some new data 
-        //    TestItem = new clsCustomer();
-        //    //set its properties
-        //    //set its properties
-        //    TestItem.IsSubscribed = true;
-        //    TestItem.CustomerId = 2;
-        //    TestItem.Name = "Sally";
-        //    TestItem.Email = "Sally@gmail.com";
-        //    TestItem.PhoneNumber = "2234567890";
-        //    TestItem.CreatedAt = DateTime.Now;
-        //    TestItem.Address = "Le3 5ft";
-        //    //add 
-        }
     }
 }
 

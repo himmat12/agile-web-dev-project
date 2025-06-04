@@ -49,5 +49,30 @@ namespace ClassLibrary
                 mThisCustomer = value;
             }
         }
+        public clsCustomerCollection()
+        {
+            //variable for the class
+            Int32 Index = 0;
+
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblCustomers_SelectAll");
+            RecordCount = DB.Count;
+            while (Index < RecordCount)
+            {
+                clsCustomer Customer = new clsCustomer();
+                //read in the fields for the current record 
+                Customer.IsSubscribed = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsSubscribed"]);
+                Customer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                Customer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                Customer.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                Customer.PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
+                Customer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                Customer.CreatedAt = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedAt"]);
+                mCustomerList.Add(Customer);
+                //point at the next record
+                Index++;
+            }
+        }
     }
 }

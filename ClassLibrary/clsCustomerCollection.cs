@@ -8,8 +8,9 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     {
-        //
+        //private data member for the list 
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private member data for thisCustomer
         clsCustomer mThisCustomer = new clsCustomer();
         public List<clsCustomer> CustomerList
         {
@@ -73,6 +74,23 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisCustomer
+            //set the primary key value of the new record
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Name", mThisCustomer.Name);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@PhoneNumber", mThisCustomer.PhoneNumber);
+            DB.AddParameter("@IsSubscribed", mThisCustomer.IsSubscribed);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@CreatedAt", mThisCustomer.CreatedAt);
+
+            //execute the query returning the primary key values
+            return DB.Execute("sproc_tblCustomers_Insert");
         }
     }
 }

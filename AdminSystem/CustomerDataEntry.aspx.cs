@@ -52,16 +52,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Customer.PhoneNumber = txtPhoneNumber.Text;
             Customer.IsSubscribed = chkIsSubscribed.Checked;
             Customer.Address = txtAddress.Text;
+            Customer.CustomerId = Convert.ToInt32(CustomerId);
             Customer.CreatedAt = Convert.ToDateTime(DateTime.Now);
-            Session["Customer"] = Customer;
+            clsCustomerCollection CustomertList = new clsCustomerCollection();
+            //set the ThisCustomer
+            CustomertList.ThisCustomer = Customer;
+            //add the new record
+            CustomertList.Add();
 
             //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
 
         else
         {
-            lblError.Text = "There were problems with the data entered" + Error;
+            lblError.Text = "Error" + Error;
 
         }
     }

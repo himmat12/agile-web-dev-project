@@ -110,5 +110,36 @@ namespace ClassLibrary
             //execute the query returning the primary key values
             DB.Execute("sproc_tblCustomers_Update");
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the paramters for the stored procedure
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomers_Delete");
+        }
+
+        //public void ReportByPhoneNumber(string v)
+        //{
+        //    //filters the records based on a full or partial phone number
+        //}
+        //    public void ReportByPhoneNumber(string PhoneNumber)
+        //    {
+        //        //filters the records based on a full or partial phone number
+        //        //connect to the database
+        //        clsDataConnection DB= new clsDataConnection();
+        //        DB.AddParameter("@PhoneNumber", PhoneNumber);
+        //        //execute 
+        //        DB.Execute("sproc_tblCustomers_FilterByPhoneNumber");
+        //    }
+
+        //    void PopulateArray(clsDataConnection DB)
+        //    {
+        //        //d
+        //    }
+        //}
     }
 }

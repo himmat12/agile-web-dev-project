@@ -46,12 +46,9 @@ public partial class _1_List : System.Web.UI.Page
             {
                 ddlOrderStatus.Items.Add(new ListItem(item));
             }
+
         }
 
-     /*   //create new instance of user
-        clsOrderUser AnUser = new clsOrderUser();
-        //get data from the session
-        AnUser = (clsOrderUser)Session["AnUser"]; */
         //if user is signed in
         if (AnUser != null)
         {
@@ -91,9 +88,35 @@ public partial class _1_List : System.Web.UI.Page
     }
 
 
-    protected void lstOrdersList_SelectedIndexChanged(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
-
+        //create a new instance of clsOrder
+        clsOrders AnOrder = new clsOrders();
+        //create a variable to store the primary key
+        Int32 OrderID;
+        //create a variable to store the result of find
+        Boolean Found = false;
+        try
+        {
+            //get the primary key entered by the user
+            OrderID = Convert.ToInt32(txtOrderID.Text);
+            //invoke find
+            Found = AnOrder.Find(OrderID);
+            //if found
+            if (Found == true)
+            {
+                //select item with the OrderID
+                lstOrdersList.SelectedValue = OrderID.ToString();
+            }
+            else if (Found == false)
+            {
+                lblError.Text = "Value not Found.";
+            }
+        }
+        catch
+        {
+            lblError.Text = "Order ID must be a number.";
+        }
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -143,8 +166,6 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select the record from the list to delete";
         }
     }
-
-
 
     protected void btnApplyFilter_Click(object sender, EventArgs e)
     {
@@ -219,7 +240,6 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnLogOut_click(object sender, EventArgs e)
     {
-        //TODO: clear user info from session
         //new instance of user
         clsOrderUser AnUser = new clsOrderUser();  
         //update session information with blank details

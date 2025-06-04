@@ -23,7 +23,8 @@ namespace Testing2
         //to strings
         private string OrderDateString = DateTime.Now.ToShortDateString();
         private string OrderTotalPriceString = Convert.ToString(14.56F);
-
+        private string OrderStaffIDString = Convert.ToString(3);
+        private string OrderCustomerIDString = Convert.ToString(14);
 
         //string for error messages
         private string Error = "";
@@ -116,7 +117,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if(AnOrder.OrderID != 2)
+            if (AnOrder.OrderID != 2)
             {
                 OK = false;
             }
@@ -138,7 +139,7 @@ namespace Testing2
         {
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderStatus != "shipped") 
+            if (AnOrder.OrderStatus != "shipped")
             {
                 OK = false;
             }
@@ -153,7 +154,7 @@ namespace Testing2
             {
                 OK = false;
             }
-          Assert.IsTrue(OK);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestTotalPriceFound()
@@ -161,10 +162,10 @@ namespace Testing2
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
             if (AnOrder.OrderTotalPrice != 28.99F)
-            {  
-                OK = false; 
-            }   
-            Assert.IsTrue(OK);  
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestStaffIDFound()
@@ -172,8 +173,8 @@ namespace Testing2
             //invoke method using test data OrderID
             Found = AnOrder.Find(OrderID);
             if (AnOrder.StaffID != 1)
-            { 
-            OK = false;
+            {
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -190,13 +191,13 @@ namespace Testing2
         }
         /******************VALIDATION TESTS******************/
 
-                     /****** ADD WHAT ERROR MESSAGE SHOULD BE THERE ******/
-         
+        /****** UPDATE ALL TO CONTAIN STAFFID AND CUSTOMREID ******/
+
         [TestMethod]
         public void ValidMethodOK()
         {
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -207,7 +208,7 @@ namespace Testing2
         public void OrderStatusMinMinusOne()
         {
             //invoke method- uses a blank string
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "Order Status cannot be blank : ");
         }
@@ -216,7 +217,7 @@ namespace Testing2
         {
             //invoke method- uses a one character string
             Status += "a";
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -224,7 +225,7 @@ namespace Testing2
         {
             //invoke method- uses a 2 character string
             Status += "aa";
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -233,7 +234,7 @@ namespace Testing2
         {
             //invoke method- uses a 19 character string
             Status = Status.PadLeft(19, 'a');
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -242,7 +243,7 @@ namespace Testing2
         {
             //invoke method- uses a 20 character string
             Status = Status.PadLeft(20, 'a');
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -251,7 +252,7 @@ namespace Testing2
         {
             //invoke method- uses a 21 character string
             Status = Status.PadLeft(21, 'a');
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "Order Status must have less than 20 characters: ");
         }
@@ -260,7 +261,7 @@ namespace Testing2
         {
             //invoke method- uses a 10 character string
             Status = Status.PadLeft(10, 'a');
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -269,23 +270,23 @@ namespace Testing2
         {
             //invoke method- uses a 500 character string
             Status = Status.PadLeft(500, 'a');
-            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString);
+            Error = AnOrder.Valid(Status, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "Order Status must have less than 20 characters: ");
         }
 
-        /** DATE **/
+        //** DATE **//
         //create a variable to store the test date data and set it to today
         private DateTime TestDate = DateTime.Now.Date;
         [TestMethod]
         public void OrderDateExtremeMin()
-        { 
+        {
             //change the date to whatever the date is less 100 years
             TestDate = TestDate.AddYears(-100);
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see that the result is correct - date cannot be less than 5 years ago
             Assert.AreEqual(Error, "The order date is too far in the past : ");
         }
@@ -297,7 +298,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see that the result is correct - changed to accept past dates
             Assert.AreEqual(Error, "");
         }
@@ -307,7 +308,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -319,7 +320,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see that the result is correct
             Assert.AreEqual(Error, "The order date cannot be in the future : ");
         }
@@ -331,7 +332,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see that the result is correct
             Assert.AreEqual(Error, "The order date cannot be in the future : ");
         }
@@ -341,9 +342,9 @@ namespace Testing2
             //invalid data type - string not date
             string OrderDate = "this is not a date!";
             //invoke method
-            Error = AnOrder.Valid(OrderStatus,OrderDate, OrderTotalPriceString);
+            Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPriceString, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
-            Assert.AreEqual(Error, "The date was not a valid date : ");
+            Assert.AreEqual(Error, "The date is not a valid date : ");
         }
 
         //** TOTAL PRICE **//
@@ -356,7 +357,7 @@ namespace Testing2
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "The total price cannot be over 7 digits : The total price cannot be lower than 0 : ");
         }
@@ -368,7 +369,7 @@ namespace Testing2
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "The total price cannot be lower than 0 : ");
         }
@@ -378,7 +379,7 @@ namespace Testing2
             //convert to string- uses default 0
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -386,11 +387,11 @@ namespace Testing2
         public void OrderTotalPriceMinPlusOne()
         {
             //change total price
-            TestTotalPrice += 1;
+            TestTotalPrice = 1;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -398,11 +399,11 @@ namespace Testing2
         public void OrderTotalPriceMaxMinusOne()
         {
             //change total price
-            TestTotalPrice += 9999998.99F;
+            TestTotalPrice = 9999998.99F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -410,11 +411,11 @@ namespace Testing2
         public void OrderTotalPriceMax()
         {
             //change total price
-            TestTotalPrice += 9999.49F;
+            TestTotalPrice = 9999.49F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -422,11 +423,11 @@ namespace Testing2
         public void OrderTotalPriceMaxPlusOne()
         {
             //change total price
-            TestTotalPrice += 10000.49F;
+            TestTotalPrice = 10000.49F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "The total price cannot be over 7 digits : ");
         }
@@ -434,11 +435,11 @@ namespace Testing2
         public void OrderTotalPriceMid()
         {
             //change total price
-            TestTotalPrice += 5000000.50F;
+            TestTotalPrice = 5000000.50F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "");
         }
@@ -446,13 +447,161 @@ namespace Testing2
         public void OrderTotalPriceExtremeMax()
         {
             //change total price
-            TestTotalPrice += 9999999999999999999999F;
+            TestTotalPrice = 9999999999999999999999F;
             //convert to string
             string TotalPrice = TestTotalPrice.ToString();
             //invoke method
-            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice);
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, TotalPrice, OrderCustomerIDString, OrderStaffIDString);
             //test to see if result is correct
             Assert.AreEqual(Error, "The total price was not in the right format - a decimal of 7 digits : ");
         }
+        //** CUSTOMER ID **//
+        private int CustomerID = 1;
+        [TestMethod]
+        public void CustomerIDExtremeMin()
+        {
+            //change customer ID
+            CustomerID = -1000;
+            //convert to string
+            string CustomerIDString = CustomerID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, CustomerIDString, OrderStaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Customer ID cannot be 0 or lower : ");
+        }
+        [TestMethod]
+        public void CustomerIDMinMinusOne()
+        {
+            //change customer ID
+            CustomerID = 0;
+            //convert to string
+            string CustomerIDString = CustomerID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, CustomerIDString, OrderStaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Customer ID cannot be 0 or lower : ");
+        }
+        [TestMethod]
+        public void CustomerIDMin()
+        {
+            //change customer ID
+            CustomerID = 1;
+            //convert to string
+            string CustomerIDString = CustomerID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, CustomerIDString, OrderStaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIDMinPlusOne()
+        {
+            //change customer ID
+            CustomerID = 2;
+            //convert to string
+            string CustomerIDString = CustomerID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, CustomerIDString, OrderStaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIDExtremeMax()
+        {
+            //change customer ID
+            CustomerID = 10000000;
+            //convert to string
+            string CustomerIDString = CustomerID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, CustomerIDString, OrderStaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Customer ID is too large : ");
+        }
+        [TestMethod]
+        public void CustomerIDInvalidData()
+        {
+            //set customer ID to a string
+            string CustomerIDString = "string";
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, CustomerIDString, OrderStaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Select a customer ID : ");
+        }
+
+        //** STAFF ID **//
+        private int StaffID = 1;
+        [TestMethod]
+        public void StaffIDExtremeMin()
+        {
+            //change Staff ID
+            StaffID = -1000;
+            //convert to string
+            string StaffIDString = StaffID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, StaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Staff ID cannot be 0 or lower : ");
+        }
+        
+        [TestMethod]
+        public void StaffIDMinMinusOne()
+        {
+            //change Staff ID
+            StaffID = 0;
+            //convert to string
+            string StaffIDString = StaffID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, StaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Staff ID cannot be 0 or lower : ");
+        }
+        
+        [TestMethod]
+        public void StaffIDMin()
+        {
+            //change Staff ID
+            StaffID = 1;
+            //convert to string
+            string StaffIDString = StaffID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, StaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMinPlusOne()
+        {
+            //change Staff ID
+            StaffID = 2;
+            //convert to string
+            string StaffIDString = StaffID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, StaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDExtremeMax()
+        {
+            //change Staff ID
+            StaffID = 10000000;
+            //convert to string
+            string StaffIDString = StaffID.ToString();
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, StaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Staff ID is too large : ");
+        }
+        [TestMethod]
+        public void StaffIDInvalidData()
+        {
+            //set Staff ID to a string
+            string StaffIDString = "string";
+            //invoke method
+            Error = AnOrder.Valid(OrderStatus, OrderDateString, OrderTotalPriceString, OrderCustomerIDString, StaffIDString);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "Select a Staff ID ");
+        }
+       
     }
 }

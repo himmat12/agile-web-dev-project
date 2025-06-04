@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace ClassLibrary
@@ -94,7 +95,7 @@ namespace ClassLibrary
             }
         }
 
-        /****** FIND METHOD ******/
+        //****** FIND METHOD ******//
         public bool Find(int orderID)
         {
             //create an instance of the data connection
@@ -123,8 +124,8 @@ namespace ClassLibrary
                 return false;
             }
         }
-        /****** VALID METHOD ******/
-        public string Valid(string orderStatus, string orderDate, string orderTotalPrice)  //could add foreign keys
+        //****** VALID METHOD ******//
+        public string Valid(string orderStatus, string orderDate, string orderTotalPrice, string customerID, string staffID)
         { 
             String Error = "";
             //make temp variable for date
@@ -134,7 +135,7 @@ namespace ClassLibrary
                 //orderDate value copied to DateTemp variable
                 DateTemp = Convert.ToDateTime(orderDate);
 
-                /** ORDERSTATUS **/
+                //** ORDERSTATUS **//
                 if (orderStatus.Length == 0)
                 {
                     Error += "Order Status cannot be blank : ";
@@ -143,12 +144,13 @@ namespace ClassLibrary
                 {
                     Error += "Order Status must have less than 20 characters: ";
                 }
+                //if default - not selected a status order
                 if (orderStatus == "--please select--")
                 {
                     Error += "Select an order status : ";
                 }
 
-                /** DATE **/
+                //** DATE **//
                 //if we cannot have past dates we cannot see past orders. so changed to be only future
                 if (DateTemp > DateTime.Now.Date)
                 {
@@ -162,9 +164,9 @@ namespace ClassLibrary
             catch
             {
                 //record the error
-                Error += "The date was not a valid date : ";
+                Error += "The date is not a valid date : ";
             }
-            /** TOTAL PRICE **/
+            //** TOTAL PRICE **//
             try
             {
                 if (orderTotalPrice.Length == 0)
@@ -184,6 +186,52 @@ namespace ClassLibrary
             {
                 //record error
                 Error += "The total price was not in the right format - a decimal of 7 digits : ";
+            }
+            //** CUSTOMER ID **//
+            try
+            {
+                //if 0 or lower
+                if (Convert.ToInt32(customerID) <= 0)
+                {
+                    Error += "Customer ID cannot be 0 or lower : ";
+                }
+                //if blank
+                if (customerID.Length == 0)
+                {
+                    Error += "Customer ID cannot be blank : ";
+                }
+                //unreasonably large
+                if (customerID.Length == 8)  
+                {
+                    Error += "Customer ID is too large : ";
+                }
+            }
+            catch
+            {
+                //if defualt - not selected a customer ID
+                Error += "Select a customer ID : ";
+            }
+            //** Staff ID **//
+            try 
+            {
+                if (Convert.ToInt32(staffID) <= 0)
+                {
+                    Error += "Staff ID cannot be 0 or lower : ";
+                }
+                if(staffID.Length == 0)
+                {
+                    Error += "Staff ID cannot be blank : ";
+                }
+                //unreasonably large
+                if (staffID.Length == 8)
+                {
+                    Error += "Staff ID is too large : ";
+                }
+            }
+            catch
+            {
+                //if defualt - not selected a customer ID
+                Error += "Select a Staff ID "; //last error message doesn't need a : at end
             }
             //always return at end
             return Error;

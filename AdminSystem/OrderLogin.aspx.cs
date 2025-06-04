@@ -11,6 +11,11 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //esnure no one is logged in
+        //new instance of user
+        clsOrderUser AnUser = new clsOrderUser();
+        //update session information with blank details
+        Session["AnUser"] = AnUser;
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -68,6 +73,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnMainMenu_Click(object sender, EventArgs e)
     {
+        //redirect to main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
 }

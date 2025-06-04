@@ -77,6 +77,8 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
         //METHODS
+        //database updating
+        //add
         public int Add()
         {
             //adds a record to the database based on the values of mThisOrder
@@ -93,7 +95,7 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblOrders_Insert");
         }
-
+        //edit/update
         public void Update()
         {
             //update an existing record based on the values of thisOrder
@@ -111,7 +113,7 @@ namespace ClassLibrary
             //execute the query returning the primary key value
            DB.Execute("sproc_tblOrders_Update");
         }
-
+        //delete
         public void Delete()
         {
             //deletes the record pointed to by thisOrder
@@ -122,7 +124,7 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblOrders_Delete");
         }
-
+        //filter
         public void ReportByStatus(string orderStatus)
         {
             //filters the records based on the status
@@ -135,8 +137,9 @@ namespace ClassLibrary
             //populate the array list with the data from tblOrders
             PopulateArray(DB);
         }
-
-        public void PopulateStatusDDL() //works will need another one for staff and customer id
+        //populating methods
+        //order status drop down list
+        public void PopulateStatusDDL()
         {
             //populates the drop down using unique order statuses from the database
             //connect to database
@@ -158,6 +161,60 @@ namespace ClassLibrary
                 status = Convert.ToString(DB.DataTable.Rows[Index]["orderStatus"]);
                 //add string to string list
                 mPopulateList.Add(status);
+                //next record
+                Index++;
+            }
+        }
+        //customer ID drop down list
+        public void PopulateCustomerDDL()
+        {
+            //populates the drop down using unique order statuses from the database
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //execute stored procedure - get unique order statuses
+            DB.Execute("sproc_tblOrders_SelectDistinctCustomerID");
+            //varible for index
+            Int32 Index = 0;
+            //count of records
+            Int32 RecordCount = DB.Count;
+            //clear private string list
+            mPopulateList = new List<string>();
+            //while there are records
+            while (Index < RecordCount)
+            {
+                //blank string
+                string customer = "";
+                //populate string
+                customer = Convert.ToString(DB.DataTable.Rows[Index]["customerID"]);
+                //add string to string list
+                mPopulateList.Add(customer);
+                //next record
+                Index++;
+            }
+        }
+        //staff ID drop down list
+        public void PopulateStaffDDL() 
+        {
+            //populates the drop down using unique order statuses from the database
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //execute stored procedure - get unique order statuses
+            DB.Execute("sproc_tblOrders_SelectDistinctStaffID");
+            //varible for index
+            Int32 Index = 0;
+            //count of records
+            Int32 RecordCount = DB.Count;
+            //clear private string list
+            mPopulateList = new List<string>();
+            //while there are records
+            while (Index < RecordCount)
+            {
+                //blank string
+                string staff = "";
+                //populate string
+                staff = Convert.ToString(DB.DataTable.Rows[Index]["staffID"]);
+                //add string to string list
+                mPopulateList.Add(staff);
                 //next record
                 Index++;
             }

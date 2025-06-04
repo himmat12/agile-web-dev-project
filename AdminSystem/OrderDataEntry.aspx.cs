@@ -11,15 +11,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        /** VALIDATION  **/
         //create new instance of user
         clsOrderUser AnUser = new clsOrderUser();
+        AnUser.Department = ""; //set to null
         //get data from the session
         AnUser = (clsOrderUser)Session["AnUser"];
 
-        //if user is not part of orders department
-        if (AnUser.Department != "Orders")
+        //if user is not part of orders department or null
+        if (AnUser.Department != "Orders" || AnUser.Department == "")
         {
-            //redirect to 
+            //redirect to main menu
             Response.Redirect("TeamMainMenu.aspx");
         }
 
@@ -27,6 +29,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         OrderID = Convert.ToInt32(Session["orderID"]);
         if (IsPostBack == false)
         {
+            //** POPULATING DROP DOWN LISTS **//
+            //STATUS
             //default value for the drop down box
             List<string> items = new List<string> { "--please select--" };
             //populate the list further
@@ -39,12 +43,49 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 items.Add(orders.PopulateList[i].ToString());
             }
-
             //adds items to drop down box
             foreach (string item in items)
             {
                 ddlOrderStatus.Items.Add(new ListItem(item));
             }
+            //CUSTOMER
+            //default value for the drop down box
+            items = new List<string> { "--please select--" };
+            //populate the list further
+            //clear orders collection 
+            orders = new clsOrdersCollection();
+            //call populate status function
+            orders.PopulateCustomerDDL();
+
+            for (int i = 0; i < orders.PopulateList.Count; i++)
+            {
+                items.Add(orders.PopulateList[i].ToString());
+            }
+            //adds items to drop down box
+            foreach (string item in items)
+            {
+                ddlCustomerID.Items.Add(new ListItem(item));
+            }
+            //STAFF
+            //default value for the drop down box
+            items = new List<string> { "--please select--" };
+            //populate the list further
+            //clear orders collection 
+            orders = new clsOrdersCollection();
+            //call populate status function
+            orders.PopulateStaffDDL();
+
+            for (int i = 0; i < orders.PopulateList.Count; i++)
+            {
+                items.Add(orders.PopulateList[i].ToString());
+            }
+            //adds items to drop down box
+            foreach (string item in items)
+            {
+                ddlStaffID.Items.Add(new ListItem(item));
+            }
+
+            //**  Displaying data in form  **//
             //if this is not a new record
             if (OrderID != -1)
             {
@@ -52,12 +93,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 DisplayOrder();
                 //OrderID can be accessed
                 txtOrderID.ReadOnly = false;
+                //find can be accessed
+                btnFind.Enabled = true;
             }
             //if it is a new record
             if (OrderID == -1)
             {
                 //orderID cannot be accessed - changed
                 txtOrderID.ReadOnly = true;
+                //find button cannot be accessed
+                btnFind.Enabled = false;
             }
         }
     }
@@ -71,12 +116,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //display the data for the record
         txtOrderID.Text = Orders.ThisOrder.OrderID.ToString();
         txtPlacementDate.Text = Orders.ThisOrder.OrderDate.ToString();
-
-
         ddlOrderStatus.Text = Orders.ThisOrder.OrderStatus.ToString();
         txtTotalPrice.Text = Orders.ThisOrder.OrderTotalPrice.ToString();
-        txtCustomerID.Text = Orders.ThisOrder.CustomerID.ToString();
-        txtStaffID.Text = Orders.ThisOrder.StaffID.ToString();
+        ddlCustomerID.Text = Orders.ThisOrder.CustomerID.ToString();
+        ddlStaffID.Text = Orders.ThisOrder.StaffID.ToString();
         chkIsPaid.Checked = Orders.ThisOrder.OrderPaid;
     }
 
@@ -91,14 +134,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture order total price
         string OrderTotalPrice = txtTotalPrice.Text;
         //capture customer id
-        string CustomerID = txtCustomerID.Text;
+        string CustomerID = ddlCustomerID.Text;
         //capture the staff id
-        string StaffID = txtStaffID.Text;
+        string StaffID = ddlStaffID.Text;
         //capture paid check box
         string Paid = chkIsPaid.Text;
 
         string Error = "";
-        Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPrice);
+        Error = AnOrder.Valid(OrderStatus, OrderDate, OrderTotalPrice, CustomerID, StaffID); //include customer and staff ID edit for drop downs - update tests
         if (Error == "")
         {
             //capture the order id
@@ -149,33 +192,39 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {       
-        //no validation - check right input type and if the number is there
-
         //create a new instance of clsOrder
         clsOrders AnOrder = new clsOrders();
         //create a variable to store the primary key
         Int32 OrderID;
         //create a variable to store the result of find
         Boolean Found = false;
-        //get the primary key entered by the user
-        OrderID = Convert.ToInt32(txtOrderID.Text);
-        //invoke find
-        Found = AnOrder.Find(OrderID);
-        //if found
-        if (Found == true)
+        try
         {
-            //display the values of the properties in the form
-            txtPlacementDate.Text = AnOrder.OrderDate.ToString();
-            ddlOrderStatus.Text = AnOrder.OrderStatus.ToString();
-            txtTotalPrice.Text = AnOrder.OrderTotalPrice.ToString();
-            txtCustomerID.Text = AnOrder.CustomerID.ToString();
-            txtStaffID.Text = AnOrder.StaffID.ToString();
-            chkIsPaid.Checked = AnOrder.OrderPaid;
-        }
-        else if(Found == false) //hard coded currently needs more refining
-        {
+            //get the primary key entered by the user
+            OrderID = Convert.ToInt32(txtOrderID.Text);
+            //invoke find
+            Found = AnOrder.Find(OrderID);
+            //if found
+            if (Found == true)
+            {
+                //display the values of the properties in the form
+                txtPlacementDate.Text = AnOrder.OrderDate.ToString();
+                ddlOrderStatus.Text = AnOrder.OrderStatus.ToString();
+                txtTotalPrice.Text = AnOrder.OrderTotalPrice.ToString();
+                ddlCustomerID.Text = AnOrder.CustomerID.ToString();
+                ddlStaffID.Text = AnOrder.StaffID.ToString();
+                chkIsPaid.Checked = AnOrder.OrderPaid;
+            }
+            else if(Found == false)
+            {
                 lblError.Text = "Value not Found.";
+            }
         }
+        catch
+        {
+            lblError.Text = "Order ID must be a number";
+        }
+        
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -186,6 +235,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnLogOut_click(object sender, EventArgs e)
     {
+        //new instance of user
+        clsOrderUser AnUser = new clsOrderUser();
+        //update session information with blank details
+        Session["AnUser"] = AnUser;
+        //redirect to main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
+
+    
 }

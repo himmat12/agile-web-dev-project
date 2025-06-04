@@ -164,7 +164,55 @@ namespace Testing4
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key 
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerId = 1;
+            TestItem.Name = "sam";
+            TestItem.Email = "sam@gmail.com";
+            TestItem.PhoneNumber = "123456789";
+            TestItem.Address = "le4 4ft";
+            TestItem.CreatedAt = DateTime.Now;
+            TestItem.IsSubscribed = true;
+            //set ThisAddress to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerId = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //Delete the record
+            AllCustomers.Delete();
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
 
+        [TestMethod]
+        public void ReportByPhoneNumberMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (should return all records);
+            FilteredCustomers.ReportByPhoneNumber("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPhoneNumberNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a phone number that doesn't exist
+            FilteredCustomers.ReportByPhoneNumber("0000");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
     }
 }
 

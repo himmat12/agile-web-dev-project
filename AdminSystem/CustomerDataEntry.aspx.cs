@@ -47,6 +47,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
+            Customer.CustomerId = CustomerId;  // DON'T MISS THIS BIT !!!!
             Customer.Name = txtName.Text;
             Customer.Email = txtEmail.Text;
             Customer.PhoneNumber = txtPhoneNumber.Text;
@@ -55,13 +56,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Customer.CustomerId = Convert.ToInt32(CustomerId);
             Customer.CreatedAt = Convert.ToDateTime(DateTime.Now);
             clsCustomerCollection CustomertList = new clsCustomerCollection();
+            
             //set the ThisCustomer
-            CustomertList.ThisCustomer = Customer;
-            //add the new record
-            CustomertList.Add();
+            if (CustomerId == -1)
+            {
+                CustomertList.ThisCustomer = Customer;
+                //add the new record
+                CustomertList.Add();
+            }
 
-            //navigate to the view page
-            Response.Redirect("CustomerList.aspx");
+            //otherwise it must be an update
+            else
+            {
+                CustomertList.ThisCustomer.Find(CustomerId);
+                CustomertList.ThisCustomer = Customer;
+                //update the record
+                CustomertList.Update();
+            }
+
+
+                //navigate to the view page
+                Response.Redirect("CustomerList.aspx");
         }
 
         else
@@ -97,5 +112,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsSubscribed.Checked = Customer.IsSubscribed;
             txtPhoneNumber.Text = Customer.PhoneNumber;
         }
+
+        //void DisplayCustomer()
+        //{
+        //    clsCustomerCollection Customer = new clsCustomerCollection();
+        //    Customer.ThisCustomer.Find(CustomerId);
+        //    //display the data for the record
+        //    txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
+        //    txtName.Text = Customer.ThisCustomer.Name.ToString();
+        //    txtEmail.Text = Customer.ThisCustomer.Email.ToString();
+        //    txtPhoneNumber.Text = Customer.ThisCustomer.PhoneNumber.ToString();
+        //    chkIsSubscribed.Checked = Customer.ThisCustomer.IsSubscribed();
+        //    txtAddress.Text = Customer.ThisCustomer.Address.ToString();
+        //    txtCreatedAt.Text = Customer.ThisCustomer.CreatedAt.ToString();
+
+        }
     }
-}

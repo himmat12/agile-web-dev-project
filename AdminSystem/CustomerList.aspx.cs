@@ -10,6 +10,9 @@ public partial class _1_List : System.Web.UI.Page
 {
     //variable to store the primary key with page level scope
     Int32 CustomerId;
+
+    public object Customer { get; private set; }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the address to be processed
@@ -77,5 +80,27 @@ public partial class _1_List : System.Web.UI.Page
             //display an error message
             lblError.Text = "Please select a record from the list to delete";
         }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection customerCollection = new clsCustomerCollection();
+        customerCollection.ReportByPhoneNumber(txtFilter.Text);
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = customerCollection.CustomerList;
+        lstCustomerList.DataValueField = "CustomerId";
+        lstCustomerList.DataValueField = "PhoneNumber";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ReportByPhoneNumber("");
+        txtFilter.Text = "";
+        lstCustomerList.DataSource = Customer.CustomerList;
+        lstCustomerList.DataValueField = "CustomerId";
+        lstCustomerList.DataValueField = "PhoneNumber";
+        lstCustomerList.DataBind();
     }
 }

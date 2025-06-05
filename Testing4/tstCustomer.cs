@@ -55,7 +55,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
             //create some test data to assign to the property
-            string TestData = "Sam";
+            string TestData = "sam";
             //assign the data 
             Customer.Name = TestData;
             //test to see that the two values are the same
@@ -68,7 +68,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
             //create some test data 
-            string TestData = "samiira@email.com";
+            string TestData = "sam@gmail.com";
             //assign the data to the property
             Customer.Email = TestData;
             //test to see that the two values are the same
@@ -81,7 +81,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
             //create some test data
-            string TestData = "07485837484";
+            string TestData = "00000000";
             //assign the data to the property
             Customer.PhoneNumber = TestData;
             //test to see that the two values are the same
@@ -167,14 +167,14 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void CustomerCreatAtFound()
+        public void CustomerCreatedAtFound()
         {
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
             Int32 CustomerId = 4;
             Found = Customer.Find(CustomerId);
-            if (Customer.CreatedAt != Convert.ToDateTime("26/08/2003"))
+            if (Customer.CreatedAt != Convert.ToDateTime("26/02/2025"))
             {
                 OK = false;
             }
@@ -247,9 +247,9 @@ namespace Testing4
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 4;
+            Int32 CustomerId = 1;
             Found = Customer.Find(CustomerId);
-            if (Customer.PhoneNumber != "082738463")
+            if (Customer.PhoneNumber != "123456789")
             {
                 OK = false;
             }
@@ -451,7 +451,7 @@ namespace Testing4
             //string variable to store the error
             string Error = "";
             //test data to pass to the method
-            string PhoneNumber = "a";
+            string PhoneNumber = "0";
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
@@ -466,7 +466,7 @@ namespace Testing4
             //string variable to store the error
             string Error = "";
             //test data to pass to the method
-            string PhoneNumber = "aa";
+            string PhoneNumber = "00";
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
@@ -480,7 +480,7 @@ namespace Testing4
             string Error = "";
             //test data to pass to the method
             string Name = "";
-            PhoneNumber = PhoneNumber.PadRight(15, 'a');
+            PhoneNumber = PhoneNumber.PadRight(15, '0');
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
@@ -495,7 +495,7 @@ namespace Testing4
             string Error = "";
             //test data to pass to the method
             string Name = "";
-            PhoneNumber = PhoneNumber.PadRight(14, 'a');
+            PhoneNumber = PhoneNumber.PadRight(14, '0');
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
@@ -510,7 +510,7 @@ namespace Testing4
             string Error = "";
             //test data to pass to the method
             string Name = "";
-            PhoneNumber = PhoneNumber.PadRight(500, 'a');
+            PhoneNumber = PhoneNumber.PadRight(500, '0');
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct

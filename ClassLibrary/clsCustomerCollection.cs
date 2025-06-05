@@ -52,29 +52,13 @@ namespace ClassLibrary
         }
         public clsCustomerCollection()
         {
-            //variable for the class
-            Int32 Index = 0;
 
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblCustomers_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsCustomer Customer = new clsCustomer();
-                //read in the fields for the current record 
-                Customer.IsSubscribed = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsSubscribed"]);
-                Customer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                Customer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                Customer.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
-                Customer.PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
-                Customer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                Customer.CreatedAt = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedAt"]);
-                mCustomerList.Add(Customer);
-                //point at the next record
-                Index++;
+            PopulateArray(DB);
+           
             }
-        }
+        
 
         public int Add()
         {
@@ -122,24 +106,49 @@ namespace ClassLibrary
             DB.Execute("sproc_tblCustomers_Delete");
         }
 
-        //public void ReportByPhoneNumber(string v)
+        //public void ReportByPhoneNumber(string v, string PhoneNumber)
         //{
         //    //filters the records based on a full or partial phone number
         //}
-        //    public void ReportByPhoneNumber(string PhoneNumber)
-        //    {
-        //        //filters the records based on a full or partial phone number
-        //        //connect to the database
-        //        clsDataConnection DB= new clsDataConnection();
-        //        DB.AddParameter("@PhoneNumber", PhoneNumber);
-        //        //execute 
-        //        DB.Execute("sproc_tblCustomers_FilterByPhoneNumber");
-        //    }
+        public void ReportByPhoneNumber(string PhoneNumber)
+        {
+            //filters the records based on a full or partial phone number
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PhoneNumber", PhoneNumber);
+            //execute 
+            DB.Execute("sproc_tblCustomers_FilterByPhoneNumber");
 
-        //    void PopulateArray(clsDataConnection DB)
-        //    {
-        //        //d
-        //    }
-        //}
-    }
+            PopulateArray(DB);
+        }
+
+         void PopulateArray(clsDataConnection DB)
+        {
+
+            //clear the current list
+            //mCustomerList = new List<clsCustomer>();
+
+            //populate the list with filtered data
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mCustomerList = new List<clsCustomer>();
+
+            while (Index < RecordCount)
+            {
+                clsCustomer Customer = new clsCustomer();
+
+                Customer.IsSubscribed = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsSubscribed"]);
+                Customer.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                Customer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                Customer.PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
+                Customer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                Customer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                Customer.CreatedAt = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedAt"]);
+                mCustomerList.Add(Customer);
+                Index++;
+
+            }
+        }
+    }  
 }

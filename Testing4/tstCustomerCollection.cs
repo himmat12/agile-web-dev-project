@@ -60,9 +60,9 @@ namespace Testing4
             //set the properties of the test object
             TestCustomer.IsSubscribed = true;
             TestCustomer.CustomerId = 1;
-            TestCustomer.Name = "Sam";
-            TestCustomer.Email = "Sam@gmail.com";
-            TestCustomer.PhoneNumber = "1234567890";
+            TestCustomer.Name = "sam";
+            TestCustomer.Email = "sam@gmail.com";
+            TestCustomer.PhoneNumber = "123456789";
             TestCustomer.CreatedAt = DateTime.Now;
             TestCustomer.Address = "Le4 4ft";
             //assign the data to the property
@@ -164,7 +164,7 @@ namespace Testing4
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
-        [TestMethod]
+        [TestMethod] 
         public void DeleteMethodOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
@@ -209,9 +209,36 @@ namespace Testing4
         {
             clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
             //apply a phone number that doesn't exist
-            FilteredCustomers.ReportByPhoneNumber("0000");
+            FilteredCustomers.ReportByPhoneNumber("88888888888");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPhoneNumberTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            FilteredCustomers.ReportByPhoneNumber("076389923");
+            //check that the correct number of records are found
+            if (FilteredCustomers.Count == 2)
+            {
+                //check to see that the first record is 6
+                if (FilteredCustomers.CustomerList[0].CustomerId != 3)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomers.CustomerList[1].CustomerId != 11)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }

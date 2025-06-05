@@ -2,44 +2,225 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1202020/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
+    <title>Supplier Data Entry</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1f2937;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f9fafb;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .form-checkbox {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: #4f46e5;
+        }
+
+        .checkbox-label {
+            color: #374151;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-secondary {
+            padding: 15px 30px;
+            background: transparent;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-find {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .error-label {
+            color: #dc2626;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .sized-box{
+            height:40px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .form-container {
+                padding: 30px;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+                margin-bottom: 40px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
-<body style="z-index: 1; left: -2px; top: 20px; display:block; position:absolute; height: 96px; width: 1474px">
-    
-
+<body>
     <form id="form1" runat="server">
-        <asp:Label ID="header" style="z-index: 2;" runat="server" Text="Supplier Data Entry" Font-Bold="True" Font-Size="X-Large"></asp:Label>
-        <br />
-        <asp:Label ID="lblId" runat="server" style="z-index: 2; left: 20px; top: 40px; position: absolute; right: 1357px" Text=" ID"></asp:Label>
-        <asp:TextBox ID="txtId" runat="server" style="z-index: 2; left: 140px; top: 40px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblName" runat="server" style="z-index: 2; left: 20px; top: 80px; position: absolute; right: 1385px" Text="Name"></asp:Label>
-        <asp:TextBox ID="txtName" runat="server" style="z-index: 2; left: 140px; top: 80px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblEmail" runat="server" style="z-index: 2; left: 20px; top: 120px; position: absolute; right: 1360px" Text="Email"></asp:Label>
-        <asp:TextBox ID="txtEmail" runat="server" style="z-index: 2; left: 140px; top: 120px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblPhone" runat="server" style="z-index: 2; left: 20px; top: 160px; position: absolute; right: 1379px" Text="Phone"></asp:Label>
-        <asp:TextBox ID="txtPhone" runat="server" style="z-index: 2; left: 140px; top: 160px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblAddress" runat="server" style="z-index: 2; left: 20px; top: 200px; position: absolute; right: 1376px; bottom: 406px;" Text="Address"></asp:Label>
-        <asp:TextBox ID="txtAddress" runat="server" style="z-index: 2; left: 140px; top: 200px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblDateAdded" runat="server" Style="z-index: 2; left: 20px; top: 240px; position: absolute; right: 1356px" Text="Date Added"></asp:Label>
-        <asp:TextBox ID="txtDateAdded" runat="server" style="z-index: 2; left: 140px; top: 240px; position: absolute; width: 127px;"></asp:TextBox>
-        <br />
-        <asp:CheckBox ID="checkActive" runat="server" style="z-index: 2; left: 140px; top: 275px; position: absolute;" Text="Active" height="22px" width="128px" />
-        <br />
-        <asp:Label ID="lblError" runat="server" style="z-index: 2; left: 20px; top: 300px; position: absolute; right: 536px; height: 19px;" ForeColor="Red"></asp:Label>
-       <br />
-        <asp:Button ID="btnCancle" runat="server" style="z-index: 2; left: 12px; top: 337px; position: absolute; width: 129px" Text="Cancle" OnClick="btnCancle_Click" />
-       <asp:Button ID="btnSubmit" runat="server" style="z-index: 2; left: 149px; top: 337px; position: absolute; width: 129px; margin-bottom: 3px" Text="Submit" OnClick="btnSubmit_Click" />
-       <asp:Button ID="btnFind" runat="server" style="z-index: 2; left: 12px; top: 382px; position: absolute; width: 270px; margin-bottom: 3px" Text="Find" OnClick="btnFind_Click" />
+            
+            <div class="form-container">
+            <asp:Label ID="header" runat="server" Text="Supplier Data Entry" CssClass="page-title"></asp:Label>
+                <div class="sized-box"></div>
+                <div class="form-group">
+                    <asp:Label ID="lblId" runat="server" Text="ID" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="txtId" runat="server" CssClass="form-input"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label ID="lblName" runat="server" Text="Name" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="txtName" runat="server" CssClass="form-input"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label ID="lblEmail" runat="server" Text="Email" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-input"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label ID="lblPhone" runat="server" Text="Phone" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="txtPhone" runat="server" CssClass="form-input"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label ID="lblAddress" runat="server" Text="Address" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-input"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label ID="lblDateAdded" runat="server" Text="Date Added" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="txtDateAdded" runat="server" CssClass="form-input"></asp:TextBox>
+                </div>
+
+                <div class="checkbox-container">
+                    <asp:CheckBox ID="checkActive" runat="server" CssClass="form-checkbox" />
+                    <label for="<%= checkActive.ClientID %>" class="checkbox-label">Active</label>
+                </div>
+
+                <asp:Label ID="lblError" runat="server" CssClass="error-label"></asp:Label>
+
+                <div class="button-group">
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn-primary" />
+                    <asp:Button ID="btnCancle" runat="server" Text="Cancel" OnClick="btnCancle_Click" CssClass="btn-secondary" />
+                </div>
+
+                <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" CssClass="btn-find" />
+            </div>
+
        
-   </form>
+    </form>
 </body>
 </html>

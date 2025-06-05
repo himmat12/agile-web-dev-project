@@ -230,12 +230,12 @@ namespace Testing1
 
             if( FilteredSuppliers.Count > 1)
             {
-                if (FilteredSuppliers.SupplierList[0].Id != 11)
+                if (FilteredSuppliers.SupplierList[0].Id != 24)
                 {
                     OK = false;
                 }
 
-                if (FilteredSuppliers.SupplierList[1].Id != 24)
+                if (FilteredSuppliers.SupplierList[1].Id != 27)
                 {
                     OK = false;
                 }
@@ -246,6 +246,46 @@ namespace Testing1
             }
 
                 Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void FilterBySupplierMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+
+            FilteredSuppliers.FilterBySupplier("");
+
+            Assert.AreEqual(AllSupplier.Count, FilteredSuppliers.Count);
+
+        }
+
+        [TestMethod]
+        public void FilterBySupplierNoneFound()
+        {
+
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+
+            Boolean OK = true;
+
+            FilteredSuppliers.FilterBySupplier("Alice");
+
+            if (FilteredSuppliers.Count == 1)
+            {
+                if (FilteredSuppliers.SupplierList[0].Id != 2)
+                {
+                    OK = false;
+                }
+
+            }
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
 
         }
     }

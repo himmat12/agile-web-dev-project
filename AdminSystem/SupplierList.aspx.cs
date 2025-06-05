@@ -80,9 +80,17 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnFilter_Click(object sender, EventArgs e)
     {
-        clsSupplierCollection Suppliers = new clsSupplierCollection();
+        if (txtSupplier.Text == "")
+        {
 
-        Suppliers.ReportByAddress(txtAddress.Text);
+            lblError.Text = "Please enter an supplier name in order to filter";
+        }
+        else
+        {
+
+         clsSupplierCollection Suppliers = new clsSupplierCollection();
+
+        Suppliers.FilterBySupplier(txtSupplier.Text);
 
         lstSupplierList.DataSource = Suppliers.SupplierList;
 
@@ -90,10 +98,11 @@ public partial class _1_List : System.Web.UI.Page
         lstSupplierList.DataValueField = "Id";
 
         // set the data field to display
-        lstSupplierList.DataTextField = "Address";
+        lstSupplierList.DataTextField = "Name";
 
 
         lstSupplierList.DataBind();
+        }
 
     }
 
@@ -101,9 +110,9 @@ public partial class _1_List : System.Web.UI.Page
     {
         clsSupplierCollection Suppliers = new clsSupplierCollection();
 
-        Suppliers.ReportByAddress("");
+        Suppliers.FilterBySupplier("");
 
-        txtAddress.Text = "";
+        txtSupplier.Text = "";
 
         lstSupplierList.DataSource = Suppliers.SupplierList;
 
@@ -111,11 +120,23 @@ public partial class _1_List : System.Web.UI.Page
         lstSupplierList.DataValueField = "Id";
 
         // set the data field to display
-        lstSupplierList.DataTextField = "Address";
+        lstSupplierList.DataTextField = "Name";
 
 
         lstSupplierList.DataBind();
 
 
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.Remove("username");
+        Response.Redirect("SupplierLogin.aspx");
     }
 }

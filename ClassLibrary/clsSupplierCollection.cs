@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Net;
 
 namespace ClassLibrary
 {
@@ -74,6 +75,18 @@ namespace ClassLibrary
             DB.Execute("sproc_tblSupplier_FilterByAddress");
 
             PopulateArray(DB);
+        }
+
+        public void FilterBySupplier(string Name)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Name", Name);
+
+            DB.Execute("sproc_tblSupplier_FilterBySupplier");
+
+            PopulateArray(DB);
+
         }
 
         public void PopulateArray(clsDataConnection DB)

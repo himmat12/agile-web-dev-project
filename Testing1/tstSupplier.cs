@@ -235,7 +235,7 @@ namespace Testing1
             clsSupplier Supplier = new clsSupplier();
             Boolean OK = true;
             Boolean Found = false;
-            Int32 SupplierId = 1;
+            Int32 SupplierId = 6;
 
             Found = Supplier.Find(SupplierId);
 

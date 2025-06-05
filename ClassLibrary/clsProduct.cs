@@ -164,45 +164,46 @@ namespace ClassLibrary
             //temp variable to store date values
             DateTime DateTemp;
 
-            //if the name is blank
-            if (name.Length == 0)
+            //name validation
+            if (string.IsNullOrWhiteSpace(name))
             {
+
                 //record the error
-                Error = Error + "The name may not be blank : ";
+                Error = Error + "The name may not be blank. ";
             }
-            if (name.Length > 50)
+            else if (name.Length > 50)
             {
                 //record the error
-                Error = Error + "The name must be less than 50 characters : ";
+                Error = Error + "The name must be less than 50 characters. ";
             }
 
             //if the size is blank
-            if (size.Length == 0)
+            if (string.IsNullOrWhiteSpace(size))
             {
                 //record the error
-                Error = Error + "The size may not be blank : ";
+                Error = Error + "The size may not be blank. ";
             }
-            if (size.Length > 50)
+            else if (size.Length > 50)
             {
                 //record the error
-                Error = Error + "The size must be less than 50 characters : ";
+                Error = Error + "The size must be less than 50 characters. ";
             }
             //if the category is blank
-            if (category.Length == 0)
+            if (string.IsNullOrWhiteSpace(category))
             {
                 //record the error
-                Error = Error + "The category may not be blank : ";
+                Error = Error + "The category may not be blank. ";
             }
-            if (category.Length > 50)
+            else if (category.Length > 50)
             {
                 //record the error
-                Error = Error + "The category must be less than 50 characters : ";
+                Error = Error + "The category must be less than 50 characters. ";
             }
             //if the price is blank
-            if (price.Length == 0)
+            if (string.IsNullOrWhiteSpace(price))
             {
                 //record the error
-                Error = Error + "The price may not be blank : ";
+                Error = Error + "The price may not be blank. ";
             }
             else
             {
@@ -211,7 +212,7 @@ namespace ClassLibrary
                     decimal priceValue = Convert.ToDecimal(price);
                     if (priceValue < 0)
                     {
-                        Error += "The price cannot be negative : ";
+                        Error += "The price cannot be negative. ";
                     }
                     else if (priceValue > 10000)
                     {
@@ -223,8 +224,9 @@ namespace ClassLibrary
                     Error += "The price was not a valid decimal : ";
                 }
             }
+            //if the released date is blank
 
-            if (releasedDate.Length == 0)
+            if (string.IsNullOrWhiteSpace(releasedDate))
             {
                 Error += "The released date may not be blank : ";
             }
@@ -233,24 +235,43 @@ namespace ClassLibrary
                 try
                 {
                     DateTemp = Convert.ToDateTime(releasedDate);
+
                     DateTime DateComp = DateTime.Now.Date;
 
-                    if (DateTemp < DateComp)
+
+
+                    if (DateTemp != DateComp)
+
                     {
-                        Error += "The released date cannot be in the past : ";
+
+                        Error += "Release date must be today’s date. ";
+
                     }
-                    else if (DateTemp > DateComp)
-                    {
-                        Error += "The released date cannot be in the future : ";
-                    }
+
                 }
+
                 catch
+
                 {
-                    Error += "The released date was not a valid date : ";
+
+                    Error += "Release date must be a valid date. ";
+
                 }
+
             }
 
+
+
             return Error;
+
+        }
+
+        public string DisplayInfo
+        {
+            get
+            {
+                return Name + " | " + Category + " | £" + Price;
+            }
         }
     }
 }

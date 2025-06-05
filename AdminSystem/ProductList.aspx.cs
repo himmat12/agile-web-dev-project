@@ -27,7 +27,7 @@ public partial class ProductList : System.Web.UI.Page
         //set the name of the primary key
         lstProductList.DataValueField = "ProductID";
         //set the data field to display
-        lstProductList.DataTextField = "Name";
+        lstProductList.DataTextField = "DisplayInfo";
         //bind the data to the list
         lstProductList.DataBind();
     }
@@ -94,7 +94,7 @@ public partial class ProductList : System.Web.UI.Page
         //set the name of the primary key
         lstProductList.DataValueField = "ProductID";
         //set the data field to display
-        lstProductList.DataTextField = "Category";
+        lstProductList.DataTextField = "DisplayInfo";
         //bind the data to the list
         lstProductList.DataBind();
 

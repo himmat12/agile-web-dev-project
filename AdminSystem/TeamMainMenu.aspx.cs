@@ -16,7 +16,17 @@ public partial class TeamMainMenu : System.Web.UI.Page
 
     protected void btnSupplier_Click(object sender, EventArgs e)
     {
-        Response.Redirect("SupplierLogin.aspx");
+        
+
+        if (Session["username"] == null)
+        {
+            Response.Redirect("SupplierLogin.aspx");
+        }
+        else
+        {
+            Response.Redirect("SupplierList.aspx");
+
+        }
     }
 
     protected void btnCustomer_Click(object sender, EventArgs e)

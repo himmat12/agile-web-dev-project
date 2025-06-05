@@ -36,7 +36,15 @@ public partial class SupplierLogin : System.Web.UI.Page
         }
         else if (Found == true)
         {
+            Session.Add("username", Username);
+
             Response.Redirect("SupplierList.aspx");
         }
+    }
+
+    protected void btnCancle_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+
     }
 }

@@ -38,7 +38,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsCustomerUser AnUser = new clsCustomerUser();
             //create some test data to assign to the property
-            string TestData = "sam";
+            string TestData = "Sam";
             AnUser.UserName = TestData;
             Assert.AreEqual(AnUser.UserName, TestData);
         }
@@ -70,7 +70,7 @@ namespace Testing4
             clsCustomerUser AnUser = new clsCustomerUser();
             Boolean Found = false;
             //create some test data to use with the method
-            string UserName = "sam";
+            string UserName = "Sam";
             string Password = "sam123";
             //invoke the method
             Found = AnUser.FindUser(UserName, Password);
@@ -88,7 +88,7 @@ namespace Testing4
             //create a boolean to record if data is okay 
             Boolean OK = true;
             //create some test data to use with the FindUser method
-            string UserName = "sam";
+            string UserName = "Sam";
             string Password = "sam123";
             //invoke the FindUser method
             Found = AnUser.FindUser(UserName, Password);

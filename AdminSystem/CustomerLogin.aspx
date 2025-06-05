@@ -14,7 +14,7 @@
             Customer Login Page</p>
         <asp:Label ID="lblUserName" runat="server" Text="UserName:"></asp:Label>
         <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
-        <p>
+&nbsp;<p>
             <asp:Label ID="Label1" runat="server" Text="Password:"></asp:Label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
             <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="[lblError]"></asp:Label>

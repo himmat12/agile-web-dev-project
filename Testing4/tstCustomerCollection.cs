@@ -164,7 +164,7 @@ namespace Testing4
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
-        [TestMethod]
+        [TestMethod] 
         public void DeleteMethodOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();

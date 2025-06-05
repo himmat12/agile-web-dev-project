@@ -38,5 +38,5 @@ public partial class CustomerLogin : System.Web.UI.Page
         {
             Response.Redirect("CustomerList.aspx");
         }
-    }
+    } 
 }

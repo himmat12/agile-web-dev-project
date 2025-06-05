@@ -2,7 +2,7 @@
 
 namespace ClassLibrary
 {
-    public class clsCustomerUser
+    public class clsCustomerUser 
     {
         private Int32 mUserID;
         private String mUserName;
@@ -17,7 +17,7 @@ namespace ClassLibrary
             }
             set
             {
-                mUserID = value;
+                mUserID = value; 
             }
         }
 

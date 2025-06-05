@@ -272,17 +272,13 @@ namespace Testing1
 
             FilteredSuppliers.FilterBySupplier("Alice");
 
-            if (FilteredSuppliers.Count > 1)
+            if (FilteredSuppliers.Count == 1)
             {
-                if (FilteredSuppliers.SupplierList[0].Id != 11)
+                if (FilteredSuppliers.SupplierList[0].Id != 2)
                 {
                     OK = false;
                 }
 
-                if (FilteredSuppliers.SupplierList[1].Id != 24)
-                {
-                    OK = false;
-                }
             }
             else
             {

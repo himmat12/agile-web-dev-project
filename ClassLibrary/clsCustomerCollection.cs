@@ -28,7 +28,7 @@ namespace ClassLibrary
         }
         public int Count
         {
-            get
+            get 
             {
                 //return the Count of the list
                 return mCustomerList.Count;
@@ -50,6 +50,9 @@ namespace ClassLibrary
                 mThisCustomer = value;
             }
         }
+
+        public bool IsSubscribed { get; set; }
+
         public clsCustomerCollection()
         {
 

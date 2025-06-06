@@ -15,7 +15,7 @@ public partial class CustomerLogin : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        clsStaffUser AnUser = new clsStaffUser();
+        clsCustomerUser AnUser = new clsCustomerUser();
         string Username = txtUserName.Text;
         string Password = txtPassword.Text;
 
@@ -37,6 +37,10 @@ public partial class CustomerLogin : System.Web.UI.Page
         else if (Found == true)
         {
             Response.Redirect("CustomerList.aspx");
+        }
+        else if (Found == false)
+        {
+            lblError.Text = "Login details are incorrect. Please try again.";
         }
     } 
 }

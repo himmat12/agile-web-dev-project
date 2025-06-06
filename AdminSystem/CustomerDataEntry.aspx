@@ -35,7 +35,7 @@
         <asp:CheckBox ID="chkIsSubscribed" runat="server" style="z-index: 1; left: 154px; top: 325px; position: absolute" Text="IsSubscribed" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 46px; top: 353px; position: absolute" Text="lblError"></asp:Label>
         <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 53px; top: 398px; position: absolute; width: 58px; height: 24px; right: 588px;" Text="OK" OnClick="btnOK_Click" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 397px; position: absolute; left: 157px; height: 25px;" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 397px; position: absolute; left: 157px; height: 25px;" Text="Cancel" OnClick="btnCancel_Click" />
         <p>
             &nbsp;</p>
     </form>

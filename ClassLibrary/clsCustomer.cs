@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
+using System.Linq.Expressions;
 
 namespace ClassLibrary
 {
     public class clsCustomer
     {
+        DateTime DateTemp;
+
         //private data member for the customer id 
         private Int32 mCustomerId;
         private string mCustomerName;
@@ -164,10 +168,10 @@ namespace ClassLibrary
                 Error = Error + "email must not remain blank : ";
 
             }
-            if (email.Length > 50)
+            if (email.Length > 60)
             {
                 //record error
-                Error = Error + "email must be under 50 characters";
+                Error = Error + "email must be under 60 characters";
             }
 
             if (address.Length == 0)
@@ -176,21 +180,24 @@ namespace ClassLibrary
                 Error = Error + "address must not remain blank : ";
 
             }
-            if (address.Length > 50)
+            if (address.Length > 90)
             {
                 //record error
-                Error = Error + "address must be under 50 characters";
+                Error = Error + "address must be under 90 characters";
             }
 
             DateTemp = Convert.ToDateTime(CreatedAt);
             DateTime DateComp = DateTime.Now.Date;
 
-            if (DateTemp < DateTime.Now.Date)
+            if (DateTemp > DateComp)
             {
-                Error += "the created date cannot be in the past : ";
+                Error += "the created date cannot be in the future : ";
             }
-
-
+            //check to see if the date is greater than todays's date
+            if (DateTemp > DateComp)
+            {
+                Error = Error + "The date cannot be in the future";
+            }
 
 
             if (PhoneNumber.Length == 0)
@@ -198,16 +205,15 @@ namespace ClassLibrary
             {
                 Error = Error + "phonenumber must not remain blank : ";
             }
-            if (PhoneNumber.Length > 50)
+            if (PhoneNumber.Length > 15)
             {
                 //record the error
-                Error = Error + "phonenumber must be under 50 characters : ";
+                Error = Error + "phonenumber must be under 15 characters : ";
             }
 
 
-            return "";
+            return ""; 
 
         }
-
     }
 }

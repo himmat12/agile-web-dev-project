@@ -84,10 +84,10 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnApplyFilter_Click(object sender, EventArgs e)
     {
-        clsCustomerCollection customerCollection = new clsCustomerCollection();
-        customerCollection.ReportByPhoneNumber(txtFilter.Text);
+        clsCustomerCollection CustomerCollection = new clsCustomerCollection();
+        CustomerCollection.ReportByPhoneNumber(txtFilter.Text);
         //set the data source to the list of customers in the collection
-        lstCustomerList.DataSource = customerCollection.CustomerList;
+        lstCustomerList.DataSource = CustomerCollection.CustomerList;
         lstCustomerList.DataValueField = "CustomerId";
         lstCustomerList.DataValueField = "PhoneNumber";
         lstCustomerList.DataBind();
@@ -103,4 +103,4 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataValueField = "PhoneNumber";
         lstCustomerList.DataBind();
     }
-}
+} 

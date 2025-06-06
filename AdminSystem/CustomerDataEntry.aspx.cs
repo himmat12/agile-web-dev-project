@@ -9,16 +9,40 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using ClassLibrary;
-
+ 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
     public int CustomerId { get; private set; }
+    Int32 CustomerID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        CustomerID = Convert.ToInt32(Session["CustomerId"]);
+        if (IsPostBack == false)
+        {
+            if (CustomerID != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+    }
+
+    protected void DisplayCustomer()
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ThisCustomer.Find(CustomerID);
+        //display the data for the record
+        txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
+        txtName.Text = Customer.ThisCustomer.Name.ToString();
+        txtEmail.Text = Customer.ThisCustomer.Email.ToString();
+        txtPhoneNumber.Text = Customer.ThisCustomer.PhoneNumber.ToString();
+        chkIsSubscribed.Checked = Customer.IsSubscribed; 
+        txtCreatedAt.Text = Customer.ThisCustomer.CreatedAt.ToString();
 
     }
 
-    protected void btnOK_Click(object sender, EventArgs e)
+
+protected void btnOK_Click(object sender, EventArgs e)
     {
 
         //create a new instance of clsCustomer
@@ -112,19 +136,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsSubscribed.Checked = Customer.IsSubscribed;
             txtPhoneNumber.Text = Customer.PhoneNumber;
         }
-
-        //void DisplayCustomer()
-        //{
-        //    clsCustomerCollection Customer = new clsCustomerCollection();
-        //    Customer.ThisCustomer.Find(CustomerId);
-        //    //display the data for the record
-        //    txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
-        //    txtName.Text = Customer.ThisCustomer.Name.ToString();
-        //    txtEmail.Text = Customer.ThisCustomer.Email.ToString();
-        //    txtPhoneNumber.Text = Customer.ThisCustomer.PhoneNumber.ToString();
-        //    chkIsSubscribed.Checked = Customer.ThisCustomer.IsSubscribed();
-        //    txtAddress.Text = Customer.ThisCustomer.Address.ToString();
-        //    txtCreatedAt.Text = Customer.ThisCustomer.CreatedAt.ToString();
-
-        }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //navigate to the view page
+        Response.Redirect("CustomerList.aspx");
+    }
+}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,9 +10,9 @@ namespace Testing4
     public class tstCustomer
     {
         //good test data
-        string Name = "Sam";
-        string Email = "Sam@gmail.com";
-        string PhoneNumber = "1234567890";
+        string Name = "sam";
+        string Email = "sam@gmail.com";
+        string PhoneNumber = "123456789";
         string Address = "Le4 4ft";
         string CreatedAt = DateTime.Now.ToShortDateString();
         // string for error messages
@@ -240,7 +241,7 @@ namespace Testing4
             }
             Assert.IsTrue(OK);
         }
-         
+
         [TestMethod]
         public void CustomerPhoneNumberFound()
         {
@@ -343,7 +344,7 @@ namespace Testing4
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "should fail for exceeding the max allowed");
         }
 
         [TestMethod]
@@ -359,6 +360,20 @@ namespace Testing4
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void NameExtremeMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store the error
+            string Error = "";
+            //test data to pass to the method
+            string Name = "";
+            Name = Name.PadRight(500, 'a');
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "should fail for exceeding max");
         }
 
 
@@ -423,7 +438,7 @@ namespace Testing4
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "exceeds the characters allowed for email");
         }
 
         [TestMethod]
@@ -440,6 +455,8 @@ namespace Testing4
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
+
 
 
         /*********PhoneNumber***********/
@@ -488,21 +505,6 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void PhoneNumberMaxLessOne()
-        {
-            clsCustomer Customer = new clsCustomer();
-            //string variable to store the error
-            string Error = "";
-            //test data to pass to the method
-            string Name = "";
-            PhoneNumber = PhoneNumber.PadRight(14, '0');
-            //invoke the method
-            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
         public void PhoneNumberExtremeMax()
         {
             clsCustomer Customer = new clsCustomer();
@@ -514,11 +516,26 @@ namespace Testing4
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
-        /*******ADDRESS*******/
         [TestMethod]
+        public void PhoneNumberExtremeMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store the error
+            string Error = "";
+            //test data to pass to the method
+            string Name = "";
+            PhoneNumber = PhoneNumber.PadRight(500, '0');
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "should fail for extreme past phone number");
+        }
+
+            /*******ADDRESS*******/
+            [TestMethod]
         public void AddressMin()
         {
             // create an instance of the class we want to create
@@ -574,7 +591,7 @@ namespace Testing4
             //invoke the method
             Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "should fail for exceeding max characters");
         }
 
         [TestMethod]
@@ -612,8 +629,81 @@ namespace Testing4
             Assert.AreEqual(Error, "");
 
         }
+        [TestMethod]
+        public void CreatedAtMinMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1); //change the date to whatever the date is less 1 day
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, ""); // past dates are accepted
+        }
 
+        [TestMethod]
+        public void CreatedAtAddedMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString("dd-mm-yyyy");
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "future");
+
+        }
+        [TestMethod]
+        public void CreatedAtExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString("dd-mm-yyyy");
+            //invoke the method
+            Error = Customer.Valid(Name, Email, PhoneNumber, Address, CreatedAt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "this should fail for bein past date ");
+        }
     }
-
-    
 }
